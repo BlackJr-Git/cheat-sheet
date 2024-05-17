@@ -1,0 +1,87 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            Int           @id @default(autoincrement())
+  email         String        @unique
+  name          String    
+  firstName     String
+  password      String
+  createdAt     DateTime      @default(now())
+  deletedAt     DateTime?
+  role          String        @default("user")
+  favTools      UserTool[]
+  likedTools    LikedTool[]
+}
+
+model Tool {
+  id            Int           @id @default(autoincrement())
+  title         String
+  image         String
+  description   String        
+  url           String        
+  images        ToolImage[]
+  published     Boolean       @default(false)
+  categories    ToolCategory[]
+  userFav       UserTool[]
+  userLikes     LikedTool[]
+}
+
+model ToolImage {
+  id            Int           @id @default(autoincrement())
+  url           String
+  description   String?
+  toolId        Int
+  tool          Tool          @relation(fields: [toolId], references: [id])
+  
+  @@index([toolId])
+}
+
+model UserTool {
+  userId        Int
+  toolId        Int
+  user          User          @relation(fields: [userId], references: [id])
+  tool          Tool          @relation(fields: [toolId], references: [id])
+
+  @@id([userId, toolId])
+  @@index([userId])
+  @@index([toolId])
+}
+
+model LikedTool {
+  userId        Int
+  toolId        Int
+  user          User @relation(fields: [userId], references: [id])
+  tool          Tool @relation(fields: [toolId], references: [id])
+
+  @@id([userId, toolId])
+  @@index([userId])
+  @@index([toolId])
+}
+
+model Category {
+  id            Int           @id @default(autoincrement())
+  name          String
+  icon          String
+  tools         ToolCategory[]
+}
+
+model ToolCategory {
+  toolId        Int
+  categoryId    Int
+  tool          Tool          @relation(fields: [toolId], references: [id])
+  category      Category      @relation(fields: [categoryId], references: [id])
+
+  @@id([toolId, categoryId])
+  @@index([toolId])
+  @@index([categoryId])
+}
