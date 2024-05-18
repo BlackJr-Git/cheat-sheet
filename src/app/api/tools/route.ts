@@ -50,6 +50,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
       description: body.description,
       url: body.url,
       image: body.image,
+      published: body.published
     };
 
     const createdTool = await Prisma.tool.create({ data: newTool });

@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
 import { ToolType } from "@/types";
-import { Icon } from "lucide-react";
 
 const Prisma = new PrismaClient();
 
@@ -19,6 +18,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
     const categories = await Prisma.category.findMany({
       skip,
       take: pageSize,
+      include: { tools: true },
     });
 
     const response = {

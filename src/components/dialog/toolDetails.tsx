@@ -18,7 +18,7 @@ function ToolDetails({ tool }: { tool: ToolType }) {
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>{tool.title}</DialogTitle>
+          <DialogTitle className="text-center text-2xl">{tool.title}</DialogTitle>
           <DialogDescription className="flex flex-col items-center justify-center gap-6">
             <div>
               <Image
@@ -31,9 +31,9 @@ function ToolDetails({ tool }: { tool: ToolType }) {
               />
             </div>
             <div>
-              <p>{tool.description}</p>
+              <p className="text-center text-xl">{tool.description}</p>
             </div>
-            <Button>
+            <Button className="w-full text-lg">
               <a href={tool.url} target="_blank">
                 Voir le site
               </a>

@@ -18,7 +18,7 @@ async function Categories() {
   return (
     <div className="my-12">
       <h1 className="text-lg my-6">SUJETS A LA UNE</h1>
-      <div className="md:flex flex-wrap gap-4 justify-center my-12 hidden">
+      <div className="md:flex flex-wrap gap-4 justify-center hidden">
         {cate.map((category: CategoryType) => (
           <CategoryCard key={category.id} category={category} />
         ))}

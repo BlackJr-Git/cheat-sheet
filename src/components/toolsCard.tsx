@@ -14,7 +14,7 @@ import {LikeButton, ToolDetails} from ".";
 
 function ToolsCard({ tool }: { tool: ToolType }) {
   return (
-    <Card>
+    <Card className="max-w-72">
       <CardHeader>
         <CardDescription>
           <Image
