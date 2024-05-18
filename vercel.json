@@ -2,7 +2,6 @@
   "build": {
     "env": {
       "DATABASE_URL": "file:./dev.db"
-    },
-    "buildCommand": "npm install && npx prisma generate"
+    }
   }
 }
