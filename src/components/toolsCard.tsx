@@ -9,7 +9,8 @@ import {
 import { Button } from "./ui/button";
 import Image from "next/image";
 import { ToolType } from "@/types";
-import LikeButton from "./likeButton";
+// import LikeButton from "./likeButton";
+import {LikeButton, ToolDetails} from ".";
 
 function ToolsCard({ tool }: { tool: ToolType }) {
   return (
@@ -32,11 +33,12 @@ function ToolsCard({ tool }: { tool: ToolType }) {
         <p className="line-clamp-2">{tool.description}</p>
       </CardContent>
       <CardFooter className="flex justify-between">
-        <Button>
+        {/* <Button>
           <a href={tool.url} target="_blank">
             Voir le site
           </a>
-        </Button>
+        </Button> */}
+        <ToolDetails tool={tool} />
         <LikeButton likes={145} />
       </CardFooter>
     </Card>
