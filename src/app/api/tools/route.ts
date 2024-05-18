@@ -18,12 +18,9 @@ export async function GET(req: NextRequest, res: NextResponse) {
     const tools: ToolType[] = await Prisma.tool.findMany({
       skip,
       take: pageSize,
-      where : {
-        published: true
-      }
-      // include: {
-      //   categories: true,
-      // },
+      where: {
+        published: true,
+      },
     });
 
     const response = {

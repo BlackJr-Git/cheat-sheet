@@ -1,22 +1,6 @@
-import { ToolsCard } from "@/components";
 import axios from "axios";
 import { ToolType, getToolsType } from "@/types";
-
-// type ToolType = {
-//   id: number;
-//   name: string;
-//   description: string;
-//   link: string;
-//   image: string;
-// };
-
-// type getToolsType = {
-//   tools: ToolType[];
-//   totalTools: number;
-//   pageSize: number;
-//   currentPage: number;
-//   totalPages: number;
-// };
+import { HeroSection, Categories, ToolsCard } from "@/components";
 
 export default async function Home() {
   async function getTools(): Promise<ToolType[]> {
@@ -33,10 +17,14 @@ export default async function Home() {
   const tools: ToolType[] = await getTools();
 
   return (
-    <main className="container py-12 flex items-center gap-6 flex-wrap">
-      {tools.map((tool) => (
+    <main className="container py-12">
+      <HeroSection />
+      <Categories />
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {tools.map((tool) => (
         <ToolsCard key={tool.id} tool={tool} />
       ))}
+      </div>
     </main>
   );
 }
