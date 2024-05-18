@@ -6,17 +6,18 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { CategoryCard } from "..";
+import { CategoryType } from "@/types";
 
 function CategoryCarousel({
   categories,
 }: {
-  categories: { id: number; name: string; icon: string }[];
+  categories: CategoryType[];
 }) {
   return (
     <Carousel className="block md:hidden">
       <CarouselContent className="-ml-1">
         {categories.map(
-          (category: { id: number; name: string; icon: string }) => (
+          (category: CategoryType) => (
             <>
               <CarouselItem key={category.id} className="pl-[16px] basis-1/2">
                 <CategoryCard key={category.id} category={category} />

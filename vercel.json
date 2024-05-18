@@ -1,0 +1,17 @@
+{
+    "build": {
+      "env": {
+        "DATABASE_URL": "file:./dev.db"
+      },
+      "commands": [
+        {
+          "name": "Install Dependencies",
+          "command": "npm install"
+        },
+        {
+          "name": "Prisma Generate",
+          "command": "npx prisma generate"
+        }
+      ]
+    }
+  }
