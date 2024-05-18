@@ -1,21 +1,22 @@
 import { ToolsCard } from "@/components";
 import axios from "axios";
+import { ToolType, getToolsType } from "@/types";
 
-type ToolType = {
-  id: number;
-  name: string;
-  description: string;
-  link: string;
-  image: string;
-};
+// type ToolType = {
+//   id: number;
+//   name: string;
+//   description: string;
+//   link: string;
+//   image: string;
+// };
 
-type getToolsType = {
-  tools: ToolType[];
-  totalTools: number;
-  pageSize: number;
-  currentPage: number;
-  totalPages: number;
-};
+// type getToolsType = {
+//   tools: ToolType[];
+//   totalTools: number;
+//   pageSize: number;
+//   currentPage: number;
+//   totalPages: number;
+// };
 
 export default async function Home() {
   async function getTools(): Promise<ToolType[]> {

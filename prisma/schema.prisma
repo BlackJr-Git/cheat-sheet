@@ -30,7 +30,7 @@ model Tool {
   description   String        
   url           String        
   images        ToolImage[]
-  published     Boolean       @default(false)
+  published     Boolean       @default(true)
   categories    ToolCategory[]
   userFav       UserTool[]
   userLikes     LikedTool[]

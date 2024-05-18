@@ -8,16 +8,8 @@ import {
 } from "@/components/ui/card";
 import { Button } from "./ui/button";
 import Image from "next/image";
-
-type ToolType = {
-  id: number;
-  title: string;
-  description: string;
-  url: string;
-  image: string;
-  published: boolean;
-  categories: string[];
-};
+import { ToolType } from "@/types";
+import LikeButton from "./likeButton";
 
 function ToolsCard({ tool }: { tool: ToolType }) {
   return (
@@ -39,8 +31,13 @@ function ToolsCard({ tool }: { tool: ToolType }) {
         <CardTitle>{tool.title}</CardTitle>
         <p className="line-clamp-2">{tool.description}</p>
       </CardContent>
-      <CardFooter>
-        <Button><a href={tool.url} target="_blank">Voir le site</a></Button>
+      <CardFooter className="flex justify-between">
+        <Button>
+          <a href={tool.url} target="_blank">
+            Voir le site
+          </a>
+        </Button>
+        <LikeButton likes={145} />
       </CardFooter>
     </Card>
   );

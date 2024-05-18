@@ -1,16 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
+import { ToolType } from "@/types";
 
 const Prisma = new PrismaClient();
-type ToolType = {
-  id: number;
-  title: string;
-  description: string;
-  url: string;
-  image: string;
-  published: boolean;
-  //   categories: string[];
-};
 
 export async function GET(req: NextRequest, res: NextResponse) {
   try {
@@ -26,12 +18,12 @@ export async function GET(req: NextRequest, res: NextResponse) {
     const tools: ToolType[] = await Prisma.tool.findMany({
       skip,
       take: pageSize,
-      include: {
-        categories: true,
+      where : {
+        published: true
       }
-      //   where: {
-      //     published: true,
-      //   } 
+      // include: {
+      //   categories: true,
+      // },
     });
 
     const response = {
