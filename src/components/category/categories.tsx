@@ -1,4 +1,4 @@
-import { CategoryCard } from "..";
+import { CategoryCard, CategoryCarousel } from "..";
 function Categories() {
   const categories = [
     {
@@ -66,11 +66,12 @@ function Categories() {
   return (
     <div className="my-12">
       <h1 className="text-lg my-6">SUJETS A LA UNE</h1>
-      <div className="flex flex-wrap gap-4 justify-center">
+      <div className="md:flex flex-wrap gap-4 justify-center my-12 hidden">
         {categories.map((category) => (
           <CategoryCard key={category.id} category={category} />
         ))}
       </div>
+      <CategoryCarousel categories={categories} />
     </div>
   );
 }
