@@ -88,7 +88,6 @@ export async function POST(req: NextRequest, res: NextResponse) {
       }
     });
   }
-  // console.log('Tous les enregistrements ont été insérés avec succès!');
   return NextResponse.json(
     "Tous les enregistrements ont été insérés avec succès!"
   );

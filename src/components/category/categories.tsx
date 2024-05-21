@@ -5,7 +5,7 @@ async function Categories() {
   async function getCatagories() {
     try {
       const { data } = await axios.get(
-        "http://localhost:3000/api/category?number=12&pages=1"
+        "https://cheat-sheet-plum.vercel.app/api/category?number=12&pages=1"
       );
       return data.categories;
     } catch (error) {

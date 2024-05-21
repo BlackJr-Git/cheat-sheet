@@ -6,7 +6,7 @@ async function BestTools() {
   async function getTools(): Promise<ToolType[]> {
     try {
       const { data }: { data: getToolsType } = await axios.get(
-        "http://localhost:3000/api/tools?number=25&pages=1"
+        "https://cheat-sheet-plum.vercel.app/api/tools?number=25&pages=1"
       );
       return data.tools;
     } catch (error) {
