@@ -13,7 +13,7 @@ async function Categories() {
     }
   }
 
-  const cate = await getCatagories();
+  const cate = await getCatagories() || [];
 
   return (
     <div className="my-12">
