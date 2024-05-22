@@ -8,4 +8,5 @@ export { default as BestTools } from "./toolsSections/bestTools";
 export { default as Footer } from "./footer/footer";
 export { default as CategoryCarousel } from "./carousel/categoryCarousel";
 export { default as ToolDetails } from "./dialog/toolDetails";
+export { default as MostRecentTools } from "./toolsSections/mostRecent";
 

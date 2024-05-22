@@ -9,19 +9,35 @@ export async function GET(req: NextRequest, res: NextResponse) {
     const { searchParams } = new URL(req.url);
     const number = searchParams.get("number");
     const pages = searchParams.get("pages");
+    const orderby = searchParams.get("orderby");
 
     const totalTools = await Prisma.tool.count();
     const pageSize = parseInt(number as string, 10) || 4;
     const currentPage = parseInt(pages as string, 10) || 1;
     const skip = (currentPage - 1) * pageSize;
 
-    const tools: ToolType[] = await Prisma.tool.findMany({
-      skip,
-      take: pageSize,
-      where: {
-        published: true,
-      },
-    });
+    let tools: ToolType[] = [];
+
+    if (orderby) {
+      tools = await Prisma.tool.findMany({
+        skip,
+        take: pageSize,
+        where: {
+          published: true,
+        },
+        orderBy: {
+          createdAt: "desc",
+        },
+      });
+    } else {
+      tools = await Prisma.tool.findMany({
+        skip,
+        take: pageSize,
+        where: {
+          published: true,
+        },
+      });
+    }
 
     const response = {
       tools: tools.slice(skip, skip + pageSize),
@@ -50,7 +66,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
       description: body.description,
       url: body.url,
       image: body.image,
-      published: body.published
+      published: body.published,
     };
 
     const createdTool = await Prisma.tool.create({ data: newTool });

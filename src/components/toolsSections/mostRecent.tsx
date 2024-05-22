@@ -2,11 +2,11 @@ import axios from "axios";
 import { ToolType, getToolsType } from "@/types";
 import ToolsCard from "../toolsCard";
 
-async function BestTools() {
+async function MostRecentTools() {
   async function getTools(): Promise<ToolType[]> {
     try {
       const { data }: { data: getToolsType } = await axios.get(
-        "https://cheat-sheet-plum.vercel.app/api/tools?number=4&pages=1"
+        "https://cheat-sheet-plum.vercel.app/api/tools?number=4&pages=1&orderby=desc"
       );
       return data.tools;
     } catch (error) {
@@ -14,10 +14,10 @@ async function BestTools() {
     }
   }
 
-  const tools: ToolType[] = await getTools() || [];
+  const tools: ToolType[] = (await getTools()) || [];
   return (
     <section className="py-12">
-      <h2 className="text-3xl font-bold mb-6">Les meilleurs outils</h2>
+      <h2 className="text-3xl font-bold mb-6">Les plus récents</h2>
       <div className="flex items-center flex-wrap gap-6 justify-center ">
         {tools.map((tool) => (
           <ToolsCard key={tool.id} tool={tool} />
@@ -27,4 +27,4 @@ async function BestTools() {
   );
 }
 
-export default BestTools;
+export default MostRecentTools;

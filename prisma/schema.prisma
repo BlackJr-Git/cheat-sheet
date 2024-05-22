@@ -38,6 +38,7 @@ model Tool {
   categories    ToolCategory[]
   userFav       UserTool[]
   userLikes     LikedTool[]
+  createdAt     DateTime      @default(now())
 }
 
 model ToolImage {

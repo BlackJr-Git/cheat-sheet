@@ -1,6 +1,6 @@
 import axios from "axios";
 import { ToolType, getToolsType } from "@/types";
-import { HeroSection, Categories, BestTools } from "@/components";
+import { HeroSection, Categories, BestTools, MostRecentTools } from "@/components";
 
 export default function Home() {
   return (
@@ -8,6 +8,7 @@ export default function Home() {
       <HeroSection />
       <Categories />
       <BestTools />
+      <MostRecentTools />
     </main>
   );
 }
