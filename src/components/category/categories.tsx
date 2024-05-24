@@ -3,6 +3,7 @@ import { CategoryType } from "@/types";
 import axios from "axios";
 async function Categories() {
   async function getCatagories() {
+    
     try {
       const { data } = await axios.get(
         "https://cheat-sheet-plum.vercel.app/api/category?number=12&pages=1"
@@ -13,7 +14,7 @@ async function Categories() {
     }
   }
 
-  const cate = await getCatagories() || [];
+  const cate = (await getCatagories()) || [];
 
   return (
     <div className="my-12">
