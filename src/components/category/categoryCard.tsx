@@ -7,7 +7,7 @@ function categoryCard({
   return (
     <Link
       href={"/"}
-      className=" bg-blue-100 hover:bg-blue-200 cursor-pointer transition p-3 rounded-xl flex flex-1 md:min-w-48 items-center gap-3"
+      className=" bg-blue-100 hover:bg-blue-200 cursor-pointer transition p-3 rounded-3xl flex flex-1 md:min-w-48 items-center gap-3"
     >
       <div className="">{category.icon}</div>
       <p className="line-clamp-1">{category.name}</p>

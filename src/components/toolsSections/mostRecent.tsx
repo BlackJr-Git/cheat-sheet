@@ -6,7 +6,7 @@ async function MostRecentTools() {
   async function getTools(): Promise<ToolType[]> {
     try {
       const { data }: { data: getToolsType } = await axios.get(
-        "https://cheat-sheet-plum.vercel.app/api/tools?number=4&pages=1&orderby=desc"
+        "https://cheat-sheet-plum.vercel.app/api/tools?number=8&pages=1&orderby=desc"
       );
       return data.tools;
     } catch (error) {

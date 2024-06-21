@@ -90,3 +90,5 @@ model ToolCategory {
   @@index([toolId])
   @@index([categoryId])
 }
+
+

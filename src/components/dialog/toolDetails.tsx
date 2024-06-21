@@ -13,13 +13,15 @@ import { Button } from "../ui/button";
 function ToolDetails({ tool }: { tool: ToolType }) {
   return (
     <Dialog>
-      <DialogTrigger className="bg-slate-100 border border-slate-200 rounded-lg p-2 hover:bg-slate-50">
+      <DialogTrigger className="rounded-lg p-2 hover:bg-slate-50 cursor-pointer">
         En savoir plus
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle className="text-center text-2xl">{tool.title}</DialogTitle>
-          <DialogDescription className="flex flex-col items-center justify-center gap-6">
+          <DialogTitle className="text-center text-2xl">
+            {tool.title}
+          </DialogTitle>
+          <div className="flex flex-col items-center justify-center gap-6">
             <div>
               <Image
                 priority
@@ -38,7 +40,7 @@ function ToolDetails({ tool }: { tool: ToolType }) {
                 Voir le site
               </a>
             </Button>
-          </DialogDescription>
+          </div>
         </DialogHeader>
       </DialogContent>
     </Dialog>

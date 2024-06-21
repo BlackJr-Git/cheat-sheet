@@ -10,7 +10,7 @@ import { Button } from "./ui/button";
 import Image from "next/image";
 import { ToolType } from "@/types";
 // import LikeButton from "./likeButton";
-import {LikeButton, ToolDetails} from ".";
+import { LikeButton, ToolDetails } from ".";
 
 function ToolsCard({ tool }: { tool: ToolType }) {
   return (
@@ -21,7 +21,7 @@ function ToolsCard({ tool }: { tool: ToolType }) {
             priority
             className="rounded-lg"
             src={tool.image}
-            alt="logo"
+            alt={tool.title}
             width={300}
             height={300}
           />
@@ -30,7 +30,7 @@ function ToolsCard({ tool }: { tool: ToolType }) {
 
       <CardContent>
         <CardTitle>{tool.title}</CardTitle>
-        <p className="line-clamp-2">{tool.description}</p>
+        <span className="line-clamp-2">{tool.description}</span>
       </CardContent>
       <CardFooter className="flex justify-between">
         {/* <Button>
