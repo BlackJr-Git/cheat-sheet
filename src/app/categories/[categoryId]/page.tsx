@@ -18,7 +18,7 @@ function Page() {
     getCategory();
   }, [categoryId]);
 
-  return <div>{category.name}</div>;
+  // return <div>{category.name}</div>;
 }
 
 export default Page;
