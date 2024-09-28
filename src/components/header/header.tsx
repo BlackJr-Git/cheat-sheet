@@ -12,7 +12,7 @@ function Header() {
         </div>
         <nav className=" hidden items-center justify-center gap-6 text-lg font-semibold md:flex">
           <Link href={"/"}>Acceuil</Link>
-          <Link href={"/"}>Sujets</Link>
+          <Link href={"/categories"}>Sujets</Link>
           <Link href={"/"}>NewsLetter</Link>
         </nav>
         <div className="flex items-center justify-center gap-3">

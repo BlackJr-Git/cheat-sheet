@@ -1,9 +1,15 @@
 import type { Metadata } from "next";
+import { Montserrat , Poppins } from "next/font/google";
 import { Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react"
 import "./globals.css";
 import { Header, Footer } from "@/components";
 
 const inter = Inter({ subsets: ["latin"] });
+
+const montserrat = Montserrat({ subsets: ["latin"] });
+
+// const poppins = Poppins({ subsets: ["latin"] }); 
 
 export const metadata: Metadata = {
   title: "Cheat Sheet",
@@ -17,10 +23,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={montserrat.className}>
         <Header />
         {children}
         <Footer />
+        <Analytics />
       </body>
     </html>
   );

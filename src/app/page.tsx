@@ -10,39 +10,46 @@ export default function Home() {
   return (
     <div>
       <Head>
-        {/* Balises de base pour Open Graph */}
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="The Cheat Sheet" />
-        <meta
-          property="og:description"
-          content="Trouver tout les sites ou outils dont vous avez besoin pour gagner du temps et de la productivité"
-        />
-        <meta
-          property="og:image"
-          content="https://the-cheat-sheet.vercel.app/homepage-1.png"
-        />
-        <meta property="og:url" content="https://the-cheat-sheet.vercel.app/" />
-        <meta property="og:site_name" content="The Cheat Sheet" />
+        <Head>
+          <meta property="og:type" content="website" />
+          <meta property="og:title" content="The Cheat Sheet" />
+          <meta
+            property="og:description"
+            content="Trouver tous les sites ou outils dont vous avez besoin pour gagner du temps et de la productivité"
+          />
+          <meta
+            property="og:image"
+            content="https://the-cheat-sheet.vercel.app/homepage-1.png"
+          />
+          <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="630" />
+          <meta
+            property="og:url"
+            content="https://the-cheat-sheet.vercel.app/"
+          />
+          <meta property="og:site_name" content="The Cheat Sheet" />
 
-        {/* Balises pour Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="The Cheat Sheet" />
-        <meta name="twitter:description" content="Trouver tout les sites ou outils dont vous avez besoin pour gagner du temps et de la productivité" />
-        <meta
-          name="twitter:image"
-          content="https://the-cheat-sheet.vercel.app/homepage-1.png"
-        />
-        <meta name="twitter:site" content="@JuniorAsosa" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content="The Cheat Sheet" />
+          <meta
+            name="twitter:description"
+            content="Trouver tous les sites ou outils dont vous avez besoin pour gagner du temps et de la productivité"
+          />
+          <meta
+            name="twitter:image"
+            content="https://the-cheat-sheet.vercel.app/homepage-1.png"
+          />
+          <meta name="twitter:site" content="@JuniorAsosa" />
 
-        {/* Titre et description par défaut */}
-        <title>
-          The Cheat Sheet | Tout les sites et outils qui vous rendent plus
-          productif
-        </title>
-        <meta
-          name="description"
-          content="Trouver tout les sites ou outils dont vous avez besoin pour gagner du temps et de la productivité"
-        />
+          <title>
+            The Cheat Sheet | Tous les sites et outils qui vous rendent plus
+            productif
+          </title>
+          <meta
+            name="description"
+            content="Trouver tous les sites ou outils dont vous avez besoin pour gagner du temps et de la productivité"
+          />
+        </Head>
       </Head>
       <main className="container py-12">
         <HeroSection />

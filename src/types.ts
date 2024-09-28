@@ -34,3 +34,13 @@ export type getCategoryType = {
   currentPage: number;
   totalPages: number;
 };
+
+export type userType = {
+  id: number;
+  name: string;
+  email: string;
+  image: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
