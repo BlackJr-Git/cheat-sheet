@@ -98,7 +98,6 @@ export async function POST(req: NextRequest, res: NextResponse) {
   // Ajuster la séquence (exemple pour PostgreSQL)
   await prisma.$executeRaw`SELECT setval(pg_get_serial_sequence('"Tool"', 'id'), ${nextId}, true);`;
 
-  console.log(`Auto-increment adjusted to start from ${nextId}`);
   NextResponse.json({
     message: `Auto-increment adjusted to start from ${nextId}`,
   });

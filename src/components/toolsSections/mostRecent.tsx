@@ -10,8 +10,6 @@ async function MostRecentTools() {
       const { data }: { data: getToolsType } = await axios.get(
         `${apiUrl}/api/tools?number=8&pages=1&orderby=desc`
       );
-      // console.log(data.tools);
-      
       return data.tools;
     } catch (error) {
       return [];
