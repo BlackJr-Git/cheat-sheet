@@ -26,7 +26,7 @@ async function Page({ params }: { params: { categoryId: string } }) {
             {category.icon} {category.name}
           </h1>
           <p className="text-lg">
-            Plus de 3000 outils disponibles dans la categorie {category.name}{" "}
+            {tools.length} outils disponibles dans la categorie {category.name}{" "}
             trouvez ce dont vous avez besoin
           </p>
         </div>
@@ -47,7 +47,7 @@ async function Page({ params }: { params: { categoryId: string } }) {
         />
       </section>
 
-      <section>
+      <section className="py-12">
         <div className="flex items-center justify-center flex-wrap gap-6">
           {category.tools.map((tool: any) => (
             <ToolsCard key={tool.tool.id} tool={tool.tool} />
