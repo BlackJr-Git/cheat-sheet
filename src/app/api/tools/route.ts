@@ -16,7 +16,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
     const currentPage = parseInt(pages as string, 10) || 1;
     const skip = (currentPage - 1) * pageSize;
 
-    let tools: ToolType[] = [];
+    let tools = [];
 
     if (orderby) {
       tools = await Prisma.tool.findMany({

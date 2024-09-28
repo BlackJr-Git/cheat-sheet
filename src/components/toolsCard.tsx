@@ -13,6 +13,8 @@ import { ToolType } from "@/types";
 import { LikeButton, ToolDetails } from ".";
 
 function ToolsCard({ tool }: { tool: ToolType }) {
+  console.log(tool);
+
   return (
     <Card className="max-w-72">
       <CardHeader>
@@ -39,7 +41,7 @@ function ToolsCard({ tool }: { tool: ToolType }) {
           </a>
         </Button> */}
         <ToolDetails tool={tool} />
-        <LikeButton likes={145} />
+        {/* <LikeButton likes={tool.userLikes.length} /> */}
       </CardFooter>
     </Card>
   );

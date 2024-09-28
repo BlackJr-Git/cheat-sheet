@@ -4,7 +4,10 @@ import Image from "next/image";
 
 function HeroSection() {
   return (
-    <section className=" h-96 flex items-center justify-center relative">
+    <section className=" h-96 flex flex-col gap-12 items-center justify-center relative">
+      <h1 className="text-3xl font-bold text-center">
+        Boostez votre productivité avec nos ressources gratuites en ligne!
+      </h1>
       <div className="w-[90%] h-60 px-6 bg-blue-100/0 rounded-xl flex md:flex-row flex-col gap-3 items-center justify-center backdrop-blur-sm z-50">
         <Input
           className="md:w-1/2 h-12"

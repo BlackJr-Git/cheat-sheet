@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
 import { Prisma } from "@prisma/client";
+import { log } from "console";
 
 const prisma = new PrismaClient();
 
@@ -10,9 +11,10 @@ export async function GET(
 ) {
   try {
     const { id } = params;
-    const category = await prisma.tool.findUnique({
+    const category = await prisma.category.findUnique({
       where: { id: parseInt(id, 10) },
     });
+
 
     if (!category) {
       return NextResponse.json({ error: "Tool not found" }, { status: 404 });

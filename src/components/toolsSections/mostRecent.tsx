@@ -8,6 +8,8 @@ async function MostRecentTools() {
       const { data }: { data: getToolsType } = await axios.get(
         "https://cheat-sheet-plum.vercel.app/api/tools?number=8&pages=1&orderby=desc"
       );
+      // console.log(data.tools);
+      
       return data.tools;
     } catch (error) {
       return [];
