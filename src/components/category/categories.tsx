@@ -1,12 +1,14 @@
 import { CategoryCard, CategoryCarousel } from "..";
 import { CategoryType } from "@/types";
 import axios from "axios";
-async function Categories() {
+
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
+export default async function Categories() {
   async function getCatagories() {
-    
     try {
       const { data } = await axios.get(
-        "https://cheat-sheet-plum.vercel.app/api/category?number=12&pages=1"
+        `${apiUrl}/api/category?number=12&pages=1`
       );
       return data.categories;
     } catch (error) {
@@ -28,5 +30,3 @@ async function Categories() {
     </div>
   );
 }
-
-export default Categories;

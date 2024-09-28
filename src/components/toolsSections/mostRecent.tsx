@@ -2,11 +2,13 @@ import axios from "axios";
 import { ToolType, getToolsType } from "@/types";
 import ToolsCard from "../toolsCard";
 
+
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 async function MostRecentTools() {
   async function getTools(): Promise<ToolType[]> {
     try {
       const { data }: { data: getToolsType } = await axios.get(
-        "https://cheat-sheet-plum.vercel.app/api/tools?number=8&pages=1&orderby=desc"
+        `${apiUrl}/api/tools?number=8&pages=1&orderby=desc`
       );
       // console.log(data.tools);
       
