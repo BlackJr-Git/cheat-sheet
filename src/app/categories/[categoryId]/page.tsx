@@ -16,6 +16,7 @@ async function Page({ params }: { params: { categoryId: string } }) {
   }
 
   const category = await getCatagories();
+  const tools = category.tools;
 
   return (
     <main className="container my-4">
@@ -48,13 +49,12 @@ async function Page({ params }: { params: { categoryId: string } }) {
 
       <section>
         <div className="flex items-center justify-center flex-wrap gap-6">
-          {category.tools.map((tool : ToolType) => (
-            <ToolsCard key={tool.id} tool={tool} />
+          {category.tools.map((tool: any) => (
+            <ToolsCard key={tool.tool.id} tool={tool.tool} />
           ))}
         </div>
       </section>
     </main>
   );
 }
-
 export default Page;
