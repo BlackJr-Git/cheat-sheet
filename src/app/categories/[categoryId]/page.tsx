@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { CategoryType } from "@/types";
 
+
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 function Page() {
   const { categoryId } = useParams();
   const [category, setCategory] = useState({} as CategoryType);
@@ -11,7 +13,7 @@ function Page() {
   useEffect(() => {
     async function getCategory() {
       const { data } = await axios.get(
-        `http://localhost:3000/api/category/${categoryId}`
+        `${apiUrl}/api/category/${categoryId}`
       );
       setCategory(data);
       console.log(data);
