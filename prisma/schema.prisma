@@ -14,18 +14,18 @@ datasource db {
 }
 
 
-model User {
-  id            Int           @id @default(autoincrement())
-  email         String        @unique
-  name          String    
-  firstName     String
-  password      String
-  createdAt     DateTime      @default(now())
-  deletedAt     DateTime?
-  role          String        @default("user")
-  favTools      UserTool[]
-  likedTools    LikedTool[]
-}
+// model User {
+//   id            Int           @id @default(autoincrement())
+//   email         String        @unique
+//   name          String    
+//   firstName     String
+//   password      String
+//   createdAt     DateTime      @default(now())
+//   deletedAt     DateTime?
+//   role          String        @default("user")
+//   favTools      UserTool[]
+//   likedTools    LikedTool[]
+// }
 
 model Tool {
   id            Int           @id @default(autoincrement())
@@ -92,3 +92,51 @@ model ToolCategory {
 }
 
 
+model Account {
+  id                 Int      @id @default(autoincrement())
+  userId             Int
+  provider           String
+  providerAccountId  String
+  refresh_token      String?  // Optionnel
+  access_token       String?  // Optionnel
+  expires_at         Int?     // Optionnel
+  token_type         String?  // Optionnel
+  scope              String?  // Optionnel
+  id_token           String?  // Optionnel
+  session_state      String?  // Optionnel
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@unique([provider, providerAccountId])
+}
+
+model User {
+  id            Int       @id @default(autoincrement())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+
+  favTools      UserTool[]
+  likedTools    LikedTool[]
+
+  accounts      Account[]
+  sessions      Session[]
+}
+
+model Session {
+  id           Int      @id @default(autoincrement())
+  sessionToken String   @unique
+  userId       Int
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id])
+}
+
+model VerificationToken {
+  identifier String
+  token      String
+  expires    DateTime
+
+  @@unique([identifier, token])
+}

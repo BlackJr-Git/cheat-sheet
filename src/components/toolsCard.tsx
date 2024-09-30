@@ -18,14 +18,14 @@ function ToolsCard({ tool }: { tool: ToolType }) {
     <Card className="max-w-72">
       <CardHeader>
         <CardDescription>
-          {/* <Image
+          <Image
             priority
             className="rounded-lg"
             src={tool.image}
             alt={tool.title}
             width={300}
             height={300}
-          /> */}
+          />
         </CardDescription>
       </CardHeader>
 
