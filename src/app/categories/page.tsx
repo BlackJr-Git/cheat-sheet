@@ -21,8 +21,8 @@ async function Page() {
 
   return (
     <main className="container flex flex-col flex-wrap gap-4 py-12">
-      <section className="relative">
-        <div className="p-12 bg-violet-500/30 flex justify-center items-center flex-col gap-4 rounded-xl backdrop-blur-sm">
+      <section className="relative mt-12">
+        <div className="p-12 bg-violet-500/30 border-2 border-violet-400 flex justify-center items-center flex-col gap-4 rounded-xl backdrop-blur-sm">
           <h1 className="text-3xl font-semibold">
             Trouvez les meilleurs outils sur differents sujets
           </h1>

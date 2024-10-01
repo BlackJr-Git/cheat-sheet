@@ -21,13 +21,13 @@ async function Page({ params }: { params: { categoryId: string } }) {
   return (
     <main className="container my-4">
       
-      <section className="relative">
-        <div className="p-12 bg-green-500/30 flex justify-center items-center flex-col gap-4 rounded-xl backdrop-blur-sm">
+      <section className="relative mt-24">
+        <div className="p-12 bg-green-500/30 border-2 border-green-400 flex justify-center items-center flex-col gap-4 rounded-xl backdrop-blur-sm">
           <h1 className="text-3xl font-semibold">
             {category.icon} {category.name}
           </h1>
           <p className="text-lg">
-            {tools?.length} outils disponibles dans la categorie {category.name}{" "}.
+            <span className="text-white bg-violet-500 p-2">{tools?.length} outils</span>  disponibles dans la categorie {category.name}{" "}.
             Trouvez ce dont vous avez besoin
           </p>
         </div>
