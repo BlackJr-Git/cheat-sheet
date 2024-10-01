@@ -21,6 +21,7 @@ export type CategoryType = {
   id: number;
   name: string;
   icon: string;
+  tools : [];
 };
 
 export type getCategoryType = {
@@ -42,5 +43,4 @@ export type userType = {
   image: string;
   createdAt: Date;
   updatedAt: Date;
-}
-
+};

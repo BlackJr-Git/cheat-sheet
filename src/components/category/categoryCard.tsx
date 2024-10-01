@@ -1,17 +1,23 @@
 import Link from "next/link";
-import {Send} from "lucide-react"
+import { Send } from "lucide-react";
 function categoryCard({
   category,
 }: {
-  category: { id: number; name: string; icon: string };
+  category: { id: number; name: string; icon: string ; tools: [] };
 }) {
   return (
     <Link
       href={`/categories/${category.id}`}
-      className=" bg-violet-100 hover:bg-violet-200 cursor-pointer transition p-3 rounded-3xl flex flex-1 md:min-w-48 items-center gap-3"
+      className=" bg-violet-100 hover:bg-violet-200 cursor-pointer transition p-3 rounded-3xl flex flex-1 md:min-w-48 items-center gap-3  border-2 border-violet-300"
     >
-      <div className="">{category.icon}</div>
-      <p className="line-clamp-1">{category.name}</p>
+      <div className="flex justify-center items-center bg-white p-3 rounded-full w-12 h-12">
+        {category.icon}
+      </div>
+      <div className="w-full">
+        <p className="line-clamp-1">{category.name}</p>
+        <p className="text-slate-500 flex items-center justify-between">{category.tools?.length} outils </p>
+        {/* <Send className="text-violet-500 " /> */}
+      </div>
     </Link>
   );
 }
