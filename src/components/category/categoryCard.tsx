@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Send } from "lucide-react";
+import { ArrowDownRight } from "lucide-react";
 function categoryCard({
   category,
 }: {
@@ -15,8 +15,8 @@ function categoryCard({
       </div>
       <div className="w-full">
         <p className="line-clamp-1">{category.name}</p>
-        <p className="text-slate-500 flex items-center justify-between">{category.tools?.length} outils </p>
-        {/* <Send className="text-violet-500 " /> */}
+        <p className="text-slate-500 flex items-center justify-between">{category.tools?.length} outils <ArrowDownRight className="text-violet-500" /> </p>
+        {/*  */}
       </div>
     </Link>
   );

@@ -4,12 +4,12 @@ import Image from "next/image";
 
 function HeroSection() {
   return (
-    <section className=" h-96 flex flex-col gap-12 items-center justify-center relative">
+    <section className="flex flex-col gap-12 items-center justify-center relative mt-24">
       <h1 className="text-4xl font-bold text-center flex flex-col gap-4 w-full">
         <span>Trouvez les meilleurs outils IA</span>
-        <span>pour gagner de la <span className="text-green-500 bg-violet-700 p-2">productivité</span></span>
+        <span>pour gagner de la <span className="text-green-600 bg-white p-2">productivité</span></span>
       </h1>
-      <div className="w-[90%] h-60 px-6 bg-blue-100/0 rounded-xl flex md:flex-row flex-col gap-3 items-center justify-center backdrop-blur-sm z-50">
+      <div className="w-[90%] h-60 px-6 bg-blue-100/0 rounded-xl flex md:flex-row flex-col gap-3 items-center justify-center backdrop-blur-sm z-40">
         <Input
           className="md:w-1/2 h-12"
           placeholder="Rechercher par category"
