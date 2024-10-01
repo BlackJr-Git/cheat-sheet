@@ -20,6 +20,7 @@ async function Page({ params }: { params: { categoryId: string } }) {
 
   return (
     <main className="container my-4">
+      
       <section className="relative">
         <div className="p-12 bg-green-500/30 flex justify-center items-center flex-col gap-4 rounded-xl backdrop-blur-sm">
           <h1 className="text-3xl font-semibold">

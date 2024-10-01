@@ -1,4 +1,5 @@
 import Link from "next/link";
+import {Send} from "lucide-react"
 function categoryCard({
   category,
 }: {
