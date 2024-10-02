@@ -10,4 +10,4 @@ export { default as CategoryCarousel } from "./carousel/categoryCarousel";
 export { default as ToolDetails } from "./dialog/toolDetails";
 export { default as MostRecentTools } from "./toolsSections/mostRecent";
 export { default as Loader } from "./ui/loader";
-
+export { default as ToolBubble } from "./heroSection/toolBubble";
