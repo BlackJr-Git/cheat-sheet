@@ -1,16 +1,25 @@
-"use client";
+import { Button } from "@/components/ui/button";
+import LoginButton from "./LoginButton";
 
-import { signIn } from "next-auth/react";
+// import { signIn } from "next-auth/react";
+import authConfig from "../../../pages/api/auth/[...nextauth]";
+import { getServerSession } from "next-auth";
 
-export default function Login() {
+export default async function Login() {
+  const session = await getServerSession(authConfig);
+
+  if (session) {
+    return (
+      <div className="flex h-full w-full items-center justify-center mt-24">
+        <p>Vous êtes connecté !</p>
+        <p>{JSON.stringify(session)}</p>
+      </div>
+    );
+  }
   return (
-    <div className="flex h-full w-full items-center justify-center">
-      <button
-        className="rounded-full bg-violet-500 p-2 font-semibold text-white hover:bg-violet-600"
-        onClick={async () => await signIn("github")}
-      >
-        Se connecter avec GitHub
-      </button>
+    <div className="flex h-full w-full items-center justify-center mt-24">
+      NON CONNECTE
+      <LoginButton />
     </div>
   );
 }
