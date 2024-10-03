@@ -5,7 +5,7 @@ import { Button } from "../ui/button";
 function Header() {
   return (
     <div className="py-4">
-      <header className="flex items-center justify-between px-12 py-3 container border-2 rounded-3xl fixed top-5 left-0 right-0 z-50 backdrop-blur">
+      <header className="flex items-center justify-between px-6 py-3 container border-2 rounded-3xl fixed top-3 left-0 right-0 z-50 backdrop-blur">
         <div>
           {/* <Image src="/logo.png" alt="logo" width={100} height={100} /> */}
           <p className="text-2xl font-extrabold">LOGO</p>

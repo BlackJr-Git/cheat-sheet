@@ -1,11 +1,16 @@
 "use client";
-import Image from "next/image";
 import { motion } from "framer-motion";
+import { Children } from "react";
 
-export default function ToolBubble({ className , icon }: { className?: string , icon: string }) {
+function MottionBubble({
+  className,
+  children,
+}: {
+  className?: string;
+  children: React.ReactNode;
+}) {
   return (
     <motion.div
-      className={`rounded-full w-20 h-20 ${className} bg-white p-3`}
       animate={{
         x: ["0%", "50%", "25%"], // Déplace le carré de 0% à 50% de la largeur de l'écran, puis retourne à 0%
         y: ["0%", "50%", "30%"], // Déplace le carré de 0% à 50% de la hauteur de l'écran, puis retourne à 0%
@@ -16,13 +21,11 @@ export default function ToolBubble({ className , icon }: { className?: string , 
         repeat: Infinity, // Répéter indéfiniment
         repeatType: "reverse", // Faire l'animation en boucle (aller-retour)
       }}
+      className={`absolute bg-transparent animate-pulse ${className} absolute`}
     >
-      <Image
-        src={icon}
-        alt="logo"
-        width={50}
-        height={50}
-      />
+      {children}
     </motion.div>
   );
 }
+
+export default MottionBubble;

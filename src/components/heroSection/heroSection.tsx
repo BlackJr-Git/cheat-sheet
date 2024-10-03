@@ -1,13 +1,16 @@
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import Image from "next/image";
-import { ToolBubble } from "@/components";
+import { ToolBubble, MottionBubble } from "@/components";
+import { ChangingWords } from "../animation";
 
 function HeroSection() {
   return (
-    <section className="flex flex-col gap-12 items-center justify-center relative mt-12 h-[60vh]">
+    <section className="flex flex-col gap-12 items-center justify-center relative h-[100vh] bg-[url('/gradient.svg')] bg-center bg-cover">
       <h1 className="text-4xl font-bold text-center flex flex-col gap-4 w-full">
-        <span>Trouvez les meilleurs outils IA</span>
+        <span className="">
+          Trouvez les meilleurs outils <ChangingWords />
+        </span>
         <span>
           pour gagner de la{" "}
           <span className="text-green-600 bg-white p-2">productivité</span>
@@ -28,21 +31,39 @@ function HeroSection() {
         alt="hero icon"
         width={300}
         height={300}
-        className="absolute bottom-0 left-0"
+        className="absolute bottom-16 left-24 -rotate-[60deg] hidden md:block"
       />
       <Image
         src="/cheat-sheet-arrow-violet.png"
         alt="hero icon"
         width={300}
         height={300}
-        className="absolute bottom-64 right-0"
-      /> 
-      <ToolBubble className="absolute bottom-72 left-12 z-50 backdrop-blur border-2 border-green-500 drop-shadow-md animate-pulse" /> {/* OK */}
-      <ToolBubble className="absolute bottom-24 right-64 z-50 backdrop-blur border-2 border-green-500 drop-shadow-md animate-pulse" /> {/* OK */}
-      <ToolBubble className="absolute top-24 left-64 z-50 backdrop-blur border-2 border-violet-500 drop-shadow-md animate-pulse" /> {/* OK */}
-      <ToolBubble className="absolute top-72 right-24 z-50 backdrop-blur border-2 border-violet-500 drop-shadow-md animate-pulse" /> {/* OK */}
-      <ToolBubble className="absolute top-16 left-[40%] z-50 backdrop-blur border-2 border-green-500 drop-shadow-md animate-pulse" /> {/* OK */}
-      <ToolBubble className="absolute bottom-12 right-[40%] z-50 backdrop-blur border-2 border-violet-500 drop-shadow-md animate-pulse" /> {/* OK */}
+        className="absolute top-12 right-48 hidden md:block"
+      />
+      <ToolBubble
+        icon={"/bubble_logo/Figma-01.svg"}
+        className="absolute top-48 right-8 md:bottom-96 md:left-12 z-20 backdrop-blur border-2 border-green-500 drop-shadow-md animate-pulse"
+      />{" "}
+      <ToolBubble
+        icon={"/bubble_logo/Figma-01.svg"}
+        className="absolute top-32 left-12 md:bottom-48 md:right-64 z-20 backdrop-blur border-2 border-green-500 drop-shadow-md animate-pulse"
+      />{" "}
+      <ToolBubble
+        icon={"/bubble_logo/sp.png"}
+        className="absolute top-12 right-32 md:top-24 md:left-64 z-20 backdrop-blur border-2 border-violet-500 drop-shadow-md animate-pulse"
+      />{" "}
+      <ToolBubble
+        icon={"/bubble_logo/chat-gpt.png"}
+        className="absolute left-8 bottom-32 md:top-72 md:right-24 z-20 backdrop-blur border-2 border-violet-500 drop-shadow-md animate-pulse"
+      />{" "}
+      <ToolBubble
+        icon={"/bubble_logo/flowbite.svg"}
+        className="absolute right-32 bottom-48 md:top-12 md:left-[40%] z-20 backdrop-blur border-2 border-green-500 drop-shadow-md animate-pulse"
+      />{" "}
+      <ToolBubble
+        icon={"/bubble_logo/notion.svg"}
+        className="absolute right-12 bottom-48 md:bottom-32 md:right-[40%] z-20 backdrop-blur border-2 border-violet-500 drop-shadow-md animate-pulse"
+      />{" "}
     </section>
   );
 }
