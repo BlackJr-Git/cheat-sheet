@@ -11,7 +11,7 @@ export async function GET(
 ) {
   try {
     const { id } = params;
-    const tool: ToolType | null = await prisma.tool.findUnique({
+    const tool = await prisma.tool.findUnique({
       where: { id: parseInt(id, 10) },
     });
 
@@ -42,7 +42,7 @@ export async function PATCH(
   }
 
   try {
-    const updatedTool: ToolType = await prisma.tool.update({
+    const updatedTool = await prisma.tool.update({
       where: { id: parseInt(id, 10) },
       data: { title, description, url, image, published },
     });
@@ -78,7 +78,7 @@ export async function DELETE(
   }
 
   try {
-    const deletedTool: ToolType = await prisma.tool.delete({
+    const deletedTool = await prisma.tool.delete({
       where: { id: parseInt(id, 10) },
     });
 
