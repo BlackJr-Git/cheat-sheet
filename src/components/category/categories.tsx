@@ -23,7 +23,7 @@ export default async function Categories() {
       <h1 className="text-lg my-6">SUJETS A LA UNE</h1>
       <div className="md:flex flex-wrap gap-4 justify-center hidden">
         {cate.map((category: CategoryType) => (
-          <CategoryCard key={category.id} category={category} />
+          <CategoryCard key={`${category.id}__card`} category={category} />
         ))}
       </div>
       <CategoryCarousel categories={cate} />
