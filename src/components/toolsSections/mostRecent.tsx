@@ -7,7 +7,7 @@ async function MostRecentTools() {
   async function getTools(): Promise<ToolType[]> {
     try {
       const { data }: { data: getToolsType } = await axios.get(
-        `${apiUrl}/api/tools?number=8&pages=1&orderby=desc`
+        `${apiUrl}/api/tools?number=12&pages=1&orderby=desc`
       );
       return data.tools;
     } catch (error) {

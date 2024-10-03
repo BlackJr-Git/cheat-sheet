@@ -5,7 +5,7 @@ export type ToolType = {
   url: string;
   image: string;
   published: boolean;
-  // userLikes : number[];
+  userLikes : number[];
   //   categories: string[];
 };
 

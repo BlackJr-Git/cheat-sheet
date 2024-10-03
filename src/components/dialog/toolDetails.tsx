@@ -9,6 +9,8 @@ import {
 import { ToolType } from "@/types";
 import Image from "next/image";
 import { Button } from "../ui/button";
+import { Share, Eye } from "lucide-react";
+import { BookmarkButton } from "../";
 
 function ToolDetails({ tool }: { tool: ToolType }) {
   return (
@@ -32,14 +34,29 @@ function ToolDetails({ tool }: { tool: ToolType }) {
                 height={400}
               />
             </div>
+
             <div>
               <p className="text-center text-xl">{tool.description}</p>
             </div>
-            <Button className="w-full text-lg">
-              <a href={tool.url} target="_blank">
-                Voir le site
-              </a>
-            </Button>
+
+            <div className="flex gap-2 w-full">
+              <Button className="w-full text-lg grow">
+                <a
+                  href={tool.url}
+                  target="_blank"
+                  className="w-full text-lg grow flex gap-4 items-center justify-center"
+                >
+                  Visiter le site <Eye />
+                </a>
+              </Button>
+              <Button className="text-lg flex gap-2 bg-transparent hover:bg-green-200 border-green-300 text-green-500">
+                <Share />
+              </Button>
+              {/* <Button className="text-lg flex gap-2">
+                <Bookmark />
+              </Button> */}
+              <BookmarkButton bookmarks={0} />
+            </div>
           </div>
         </DialogHeader>
       </DialogContent>

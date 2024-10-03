@@ -18,7 +18,11 @@ function LikeButton({ likes }: { likes: number }) {
   }
 
   return (
-    <Button variant="outline" className="flex gap-2 cursor-pointer" onClick={likeTool}>
+    <Button
+      variant="outline"
+      className="flex gap-2 cursor-pointer"
+      onClick={likeTool}
+    >
       {" "}
       <HeartIcon
         className={`h-6 w-6 ${isliked ? "text-red-500 fill-red-500" : ""} `}

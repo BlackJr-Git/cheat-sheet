@@ -17,12 +17,12 @@ function Header() {
           </div>
 
           <div className="relative group">
-            <Link href={"/categories"}>Sujets</Link>
+            <Link href={"/categories"}>Categories</Link>
             <span className="absolute left-0 bottom-0 w-full h-[2px] bg-violet-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
           </div>
 
           <div className="relative group">
-            <Link href={"/"}>NewsLetter</Link>
+            <Link href={"/"}>Blog</Link>
             <span className="absolute left-0 bottom-0 w-full h-[2px] bg-green-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
           </div>
         </nav>

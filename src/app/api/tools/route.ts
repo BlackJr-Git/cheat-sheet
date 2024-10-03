@@ -28,6 +28,9 @@ export async function GET(req: NextRequest, res: NextResponse) {
         orderBy: {
           createdAt: "desc",
         },
+        include: {
+          userLikes: true,
+        }
       });
     } else {
       tools = await Prisma.tool.findMany({

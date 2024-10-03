@@ -34,13 +34,13 @@ function ToolsCard({ tool }: { tool: ToolType }) {
         <span className="line-clamp-2">{tool.description}</span>
       </CardContent>
       <CardFooter className="flex justify-between">
-        <Button>
+        {/* <Button>
           <a href={tool.url} target="_blank">
             Voir le site
           </a>
-        </Button>
+        </Button> */}
         <ToolDetails tool={tool} />
-        {/* <LikeButton likes={tool.userLikes.length} /> */}
+        <LikeButton likes={tool.userLikes?.length || 0} />
       </CardFooter>
     </Card>
   );

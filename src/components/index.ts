@@ -12,3 +12,4 @@ export { default as MostRecentTools } from "./toolsSections/mostRecent";
 export { default as Loader } from "./ui/loader";
 export { default as ToolBubble } from "./heroSection/toolBubble";
 export { default as MottionBubble } from "./animation/motionBubble";
+export { default as BookmarkButton } from "./bookmarkButton";
