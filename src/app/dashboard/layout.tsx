@@ -7,7 +7,7 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    <main className="container mt-24 flex justify-center items-center gap-4">
+    <main className="container mt-24 flex justify-center items-center gap-4 mb-24">
       <SideBar />
       {children}
     </main>

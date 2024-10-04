@@ -14,3 +14,4 @@ export { default as ToolBubble } from "./heroSection/toolBubble";
 export { default as MottionBubble } from "./animation/motionBubble";
 export { default as BookmarkButton } from "./bookmarkButton";
 export { default as UserAvatar } from "./header/userAvatar";
+// export { default as ToolsCard } from "./toolsCard";
