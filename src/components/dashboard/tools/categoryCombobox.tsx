@@ -91,6 +91,7 @@ export default function CategoryCombobox({
                       value === category.name ? "opacity-100" : "opacity-0"
                     )}
                   />
+                  {category.icon}
                   {category.name}
                 </CommandItem>
               ))}

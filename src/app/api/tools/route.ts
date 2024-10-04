@@ -33,9 +33,9 @@ export async function GET(req: NextRequest, res: NextResponse) {
           categories: {
             include: {
               category: true,
-            }
-          }
-        }
+            },
+          },
+        },
       });
     } else {
       tools = await Prisma.tool.findMany({
@@ -48,7 +48,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
     }
 
     const response = {
-      tools: tools.slice(skip, skip + pageSize),
+      tools: tools,
       totalTools,
       pageSize,
       currentPage,
