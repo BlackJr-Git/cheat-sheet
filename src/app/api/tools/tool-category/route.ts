@@ -21,6 +21,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
 
     const addedToolCategory = await Prisma.toolCategory.create({
       data: newToolCategory,
+      include: { tool: true, category: true },
     });
 
     return NextResponse.json(addedToolCategory);

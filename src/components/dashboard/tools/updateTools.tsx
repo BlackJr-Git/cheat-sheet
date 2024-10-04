@@ -18,7 +18,7 @@ import axios from "axios";
 import { ToolType } from "@/types";
 
 export default function UpdateToolsDialog({ tool }: { tool: any }) {
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState([] as any[]);
 
   const [addedCategory, setAddedCategory] = useState({
     toolId: tool.id,
@@ -43,6 +43,16 @@ export default function UpdateToolsDialog({ tool }: { tool: any }) {
           `${process.env.NEXT_PUBLIC_API_URL}/api/tools/tool-category`,
           addedCategory
         );
+
+        if (response.status === 200) {
+          const category = {
+            toolId: tool.id,
+            categoryId: addedCategory.categoryId,
+            category : response.data.category
+          }
+          setCategories([...categories, category]);
+          console.log(response.data);
+        }
       } catch (error) {
         console.log(error);
       }
@@ -54,7 +64,7 @@ export default function UpdateToolsDialog({ tool }: { tool: any }) {
       <DialogTrigger className="rounded-full p-2 hover:bg-violet-200 cursor-pointer bg-violet-400 w-full">
         Modifier
       </DialogTrigger>
-      <DialogContent>
+      <DialogContent className="max-h-[90vh] overflow-y-scroll scrollbar-hide">
         <DialogHeader>
           <DialogTitle>{tool.title}</DialogTitle>
         </DialogHeader>
