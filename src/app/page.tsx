@@ -51,7 +51,7 @@ export default function Home() {
           />
         </Head>
       </Head>
-      <main className="container py-12">
+      <main className="py-12">
         <HeroSection />
         <Categories />
         <BestTools />

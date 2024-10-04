@@ -42,19 +42,19 @@ function HeroSection() {
       />
       <ToolBubble
         icon={"/bubble_logo/Figma-01.svg"}
-        className="absolute 8 md:bottom-96 md:left-12 z-20 backdrop-blur border-2 border-green-500 drop-shadow-md animate-pulse hidden md:block"
+        className="absolute 8 md:bottom-96 md:left-24 z-20 backdrop-blur border-2 border-green-500 drop-shadow-md animate-pulse hidden md:block"
       />{" "}
       <ToolBubble
         icon={"/bubble_logo/Figma-01.svg"}
-        className="absolute  md:bottom-48 md:right-64 z-20 backdrop-blur border-2 border-green-500 drop-shadow-md animate-pulse hidden md:block"
+        className="absolute  md:bottom-48 md:right-72 z-20 backdrop-blur border-2 border-green-500 drop-shadow-md animate-pulse hidden md:block"
       />{" "}
       <ToolBubble
         icon={"/bubble_logo/sp.png"}
-        className="absolute  md:top-24 md:left-64 z-20 backdrop-blur border-2 border-violet-500 drop-shadow-md animate-pulse hidden md:block"
+        className="absolute  md:top-24 md:left-72 z-20 backdrop-blur border-2 border-violet-500 drop-shadow-md animate-pulse hidden md:block"
       />{" "}
       <ToolBubble
         icon={"/bubble_logo/chat-gpt.png"}
-        className="absolute  md:top-72 md:right-24 z-20 backdrop-blur border-2 border-violet-500 drop-shadow-md animate-pulse hidden md:block"
+        className="absolute  md:top-72 md:right-32 z-20 backdrop-blur border-2 border-violet-500 drop-shadow-md animate-pulse hidden md:block"
       />{" "}
       <ToolBubble
         icon={"/bubble_logo/flowbite.svg"}

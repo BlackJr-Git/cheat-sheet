@@ -19,7 +19,7 @@ export default async function Categories() {
   const cate = (await getCatagories()) || [];
 
   return (
-    <div className="my-12">
+    <div className="my-12 container ">
       <h1 className="text-lg my-6 text-center">SUJETS A LA UNE</h1>
       <div className="md:flex flex-wrap gap-4 justify-center hidden">
         {cate.map((category: CategoryType) => (

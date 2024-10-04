@@ -34,16 +34,18 @@ function Header() {
           <Button variant={"outline"}>Connexion</Button>
           <Button>S&apos;inscrire</Button>
         </div>
+          
           <Bars3CenterLeftIcon
-            className="w-8 h-8"
+            className="w-8 h-8 md:hidden"
             onClick={() => setOpen(!open)}
           />
         {/* <Bars3CenterLeftIcon
           className="w-8 h-8"
           onClick={() => setOpen(!open)}
         /> */}
-        {open && <MobileHeader setOpen={setOpen} />}
+        
       </header>
+      {open && <MobileHeader setOpen={setOpen} />}
     </div>
   );
 }

@@ -17,7 +17,7 @@ async function BestTools() {
 
   const tools: ToolType[] = await getTools() || [];
   return (
-    <section className="py-12">
+    <section className="py-12 container ">
       <h2 className="text-3xl font-bold mb-8 text-center">Les meilleurs outils</h2>
       <div className="flex items-center flex-wrap gap-6 justify-center ">
         {tools.map((tool) => (
