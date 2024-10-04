@@ -13,6 +13,7 @@ export async function GET(
     const { id } = params;
     const tool = await prisma.tool.findUnique({
       where: { id: parseInt(id, 10) },
+      include: { categories: true },
     });
 
     if (!tool) {

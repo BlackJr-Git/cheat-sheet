@@ -6,7 +6,7 @@ export type ToolType = {
   image: string;
   published: boolean;
   userLikes : number[];
-  //   categories: string[];
+  categories: string[];
 };
 
 export type getToolsType = {
@@ -15,6 +15,11 @@ export type getToolsType = {
   pageSize: number;
   currentPage: number;
   totalPages: number;
+  categories: {
+    toolId: number;
+    categoryId: number;
+    category: { id: number; name: string; icon: string };
+  }[];
 };
 
 export type CategoryType = {

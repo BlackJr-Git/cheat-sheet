@@ -30,6 +30,11 @@ export async function GET(req: NextRequest, res: NextResponse) {
         },
         include: {
           userLikes: true,
+          categories: {
+            include: {
+              category: true,
+            }
+          }
         }
       });
     } else {
