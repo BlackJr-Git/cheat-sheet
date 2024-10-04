@@ -37,6 +37,9 @@ export default function UpdateToolsDialog({ tool }: { tool: any }) {
   }
 
   async function addCategory() {
+    // if (categories.includes(addedCategory.categoryId)) {
+      
+    // }
     if (addedCategory.categoryId) {
       try {
         const response = await axios.post(
@@ -48,10 +51,9 @@ export default function UpdateToolsDialog({ tool }: { tool: any }) {
           const category = {
             toolId: tool.id,
             categoryId: addedCategory.categoryId,
-            category : response.data.category
-          }
+            category: response.data.category,
+          };
           setCategories([...categories, category]);
-          console.log(response.data);
         }
       } catch (error) {
         console.log(error);
