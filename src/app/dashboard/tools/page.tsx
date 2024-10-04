@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
+import { DashboardToolsCard } from "@/components/dashboard";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
@@ -42,7 +43,6 @@ const activeTool = {
 
 export default function Page() {
   const [tools, setTools] = useState([] as ToolType[]);
-  
 
   useEffect(() => {
     async function getTools(): Promise<ToolType[]> {
@@ -62,12 +62,13 @@ export default function Page() {
 
   return (
     <div className="w-full bg-slate-100 grow rounded-2xl p-4 max-h-[90%] flex gap-4">
-      <div className="flex items-center flex-wrap gap-4 w-[70%] justify-center overflow-y-scroll scrollbar-hide">
+      <div className="flex items-center flex-wrap gap-4 w-full justify-center overflow-y-scroll scrollbar-hide">
         {tools.map((tool) => (
-          <ToolsCard key={tool.id} tool={tool} />
+          <DashboardToolsCard key={tool.id} tool={tool} />
         ))}
       </div>
-      <div className="flex justify-center items-center flex-col p-4 gap-4 w-[30%] bg-white rounded-xl overflow-y-scroll scrollbar-hide">
+
+      {/* <div className="flex justify-center items-center flex-col p-4 gap-4 w-[30%] bg-white rounded-xl overflow-y-scroll scrollbar-hide">
         <div>
           <Image
             priority
@@ -81,17 +82,18 @@ export default function Page() {
         <Input placeholder="" value={activeTool.title} />
         <Textarea placeholder="" value={activeTool.description} />
         <Input placeholder="" value={activeTool.url} />
-        
+
         <div className="flex flex-col w-full">
           <p>Catégorie</p>
-          
+
           <div className="flex flex-wrap gap-2">
             {activeTool.category.map((category) => (
               <div
                 key={category.id}
                 className="bg-green-500 rounded-full py-1 px-2 flex items-center justify-center gap-3"
               >
-              <p className="text-white">{category.name}</p>   <button className="text-red-500 font-bold">X</button>
+                <p className="text-white">{category.name}</p>{" "}
+                <button className="text-red-500 font-bold">X</button>
               </div>
             ))}
           </div>
@@ -100,7 +102,7 @@ export default function Page() {
           Publié <Switch value={"on"} />
         </div>
         <Button className="w-full">Enregistrer</Button>
-      </div>
+      </div> */}
     </div>
   );
 }

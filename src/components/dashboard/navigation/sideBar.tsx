@@ -11,7 +11,7 @@ import {
 
 export default function SideBar() {
   return (
-    <header className="flex flex-col items-center justify-between w-1/5 bg-violet-500 h-[70vh] rounded-2xl p-4">
+    <header className="flex flex-col items-center justify-between gap-8 w-1/5 grow h-full bg-violet-500 rounded-2xl p-4">
       <div>
         <UserAvatar />
       </div>
