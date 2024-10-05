@@ -68,27 +68,27 @@ function HeroSection() {
       {/* <MottionBubble /> for mobile device */}
       <ToolBubble
         icon={"/bubble_logo/Figma-01.svg"}
-        className="absolute top-52 left-40 z-20 backdrop-blur border-2 border-green-500 drop-shadow-md animate-pulse"
+        className="absolute top-52 left-40 z-20 backdrop-blur border-2 border-green-500 drop-shadow-md animate-pulse md:hidden"
       />{" "}
       <ToolBubble
         icon={"/bubble_logo/Figma-01.svg"}
-        className="absolute  top-20 right-[50%] z-20 backdrop-blur border-2 border-green-500 drop-shadow-md animate-pulse"
+        className="absolute  top-20 right-[50%] z-20 backdrop-blur border-2 border-green-500 drop-shadow-md animate-pulse md:hidden"
       />{" "}
       <ToolBubble
         icon={"/bubble_logo/sp.png"}
-        className="absolute top-40 left-72 z-20 backdrop-blur border-2 border-violet-500 drop-shadow-md animate-pulse"
+        className="absolute top-40 left-72 z-20 backdrop-blur border-2 border-violet-500 drop-shadow-md animate-pulse md:hidden"
       />{" "}
       <ToolBubble
         icon={"/bubble_logo/chat-gpt.png"}
-        className="absolute top-4 left-4 z-20 backdrop-blur border-2 border-violet-500 drop-shadow-md animate-pulse"
+        className="absolute top-4 left-4 z-20 backdrop-blur border-2 border-violet-500 drop-shadow-md animate-pulse md:hidden"
       />{" "}
       <ToolBubble
         icon={"/bubble_logo/flowbite.svg"}
-        className="absolute top-2 right-6 z-20 backdrop-blur border-2 border-green-500 drop-shadow-md animate-pulse"
+        className="absolute top-2 right-6 z-20 backdrop-blur border-2 border-green-500 drop-shadow-md animate-pulse md:hidden"
       />{" "}
       <ToolBubble
         icon={"/bubble_logo/notion.svg"}
-        className="absolute top-40 left-4 z-20 backdrop-blur border-2 border-violet-500 drop-shadow-md animate-pulse"
+        className="absolute top-40 left-4 z-20 backdrop-blur border-2 border-violet-500 drop-shadow-md animate-pulse md:hidden"
       />{" "}
     </section>
   );
