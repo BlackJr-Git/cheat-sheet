@@ -16,9 +16,11 @@ import { CategoryCombobox } from "@/components/dashboard";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { ToolType } from "@/types";
+import { PlusIcon, XCircleIcon , ArrowPathIcon} from "@heroicons/react/24/outline";
 
 export default function UpdateToolsDialog({ tool }: { tool: any }) {
   const [categories, setCategories] = useState([] as any[]);
+  const [loading, setLoading] = useState(false);
 
   const [addedCategory, setAddedCategory] = useState({
     toolId: tool.id,
@@ -38,10 +40,11 @@ export default function UpdateToolsDialog({ tool }: { tool: any }) {
 
   async function addCategory() {
     // if (categories.includes(addedCategory.categoryId)) {
-      
+
     // }
     if (addedCategory.categoryId) {
       try {
+        setLoading(true);
         const response = await axios.post(
           `${process.env.NEXT_PUBLIC_API_URL}/api/tools/tool-category`,
           addedCategory
@@ -54,9 +57,11 @@ export default function UpdateToolsDialog({ tool }: { tool: any }) {
             category: response.data.category,
           };
           setCategories([...categories, category]);
+          setLoading(false);
         }
       } catch (error) {
         console.log(error);
+        setLoading(false);
       }
     }
   }
@@ -86,33 +91,47 @@ export default function UpdateToolsDialog({ tool }: { tool: any }) {
             placeholder=""
             value={tool.title}
             onChange={(e) => console.log(e.target.value)}
+            className="rounded-xl"
           />
           <Input
             placeholder=""
             value={tool.url}
             onChange={(e) => console.log(e.target.value)}
+            className="rounded-xl"
           />
           <Textarea
             placeholder=""
             value={tool.description}
             onChange={(e) => console.log(e.target.value)}
+            className=""
           />
           <div className="flex flex-col w-full gap-2">
             <p>Catégorie</p>
-            <div>
-              <CategoryCombobox tooId={tool.id} getCategoryId={getCategoryId} />{" "}
-              <Button onClick={addCategory}>Ajouter</Button>
-            </div>
+
             <div className="flex flex-wrap gap-2">
               {categories?.map((item: any) => (
                 <div
                   key={item.categoryId}
-                  className="bg-green-500 rounded-full py-1 px-2 flex items-center justify-center gap-3"
+                  className="bg-violet-500 rounded-full py-1 px-2 flex items-center justify-center gap-3"
                 >
-                  <p className="text-white">{item.category.name}</p>{" "}
-                  <button className="text-red-500 font-bold">X</button>
+                  <p className="text-white">{item?.category?.name}</p>{" "}
+                  <button className="text-white font-bold p-1">
+                    {" "}
+                    <XCircleIcon className="w-4 h-4 hover:text-red-500 " />{" "}
+                  </button>
                 </div>
               ))}
+            </div>
+            <div className="flex gap-2 items-center mt-2">
+              <CategoryCombobox tooId={tool.id} getCategoryId={getCategoryId} />{" "}
+              {loading ? (
+                <ArrowPathIcon className="w-6 h-6 animate-spin text-violet-500" />
+              ) : (
+                <PlusIcon
+                  onClick={addCategory}
+                  className="w-8 h-8 text-violet-500 cursor-pointer border-2 border-violet-500 p-1 rounded-full"
+                />
+              )}
             </div>
           </div>
           <div className="flex items-center justify-end gap-2 w-full">

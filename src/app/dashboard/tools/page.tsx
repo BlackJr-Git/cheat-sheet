@@ -13,11 +13,11 @@ export default function Page() {
     async function getTools(): Promise<ToolType[]> {
       try {
         const { data }: { data: getToolsType } = await axios.get(
-          `${apiUrl}/api/tools?number=16&pages=3&orderby=asc`
+          `${apiUrl}/api/tools?number=16&pages=1&orderby=asc`
         );
         setTools(data.tools);
         console.log();
-        
+
         return data.tools;
       } catch (error) {
         console.error("Error fetching tools:", error);

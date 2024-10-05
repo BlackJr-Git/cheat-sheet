@@ -7,6 +7,10 @@ import { useState } from "react";
 
 function Header() {
   const [open, setOpen] = useState(false);
+  // {open && return <MobileHeader setOpen={setOpen} />}
+  if (open) {
+    return <MobileHeader setOpen={setOpen} />
+  }
   return (
     <div className="py-4">
       <header className="flex items-center justify-between px-6 py-3 container border-2 rounded-3xl fixed top-3 left-0 right-0 z-40 backdrop-blur">
@@ -45,7 +49,7 @@ function Header() {
         /> */}
         
       </header>
-      {open && <MobileHeader setOpen={setOpen} />}
+      
     </div>
   );
 }
@@ -55,7 +59,7 @@ export default Header;
 function MobileHeader({ setOpen }: { setOpen: (open: boolean) => void }) {
   return (
     <div className="">
-      <header className="flex flex-col items-center justify-between px-6 py-3 container border-2 rounded-3xl absolute top-0 left-0 right-0 z-50 bg-white">
+      <header className="flex flex-col items-center justify-between px-6 py-3 container border-2 rounded-3xl absolute top-0 left-0 right-0 z-50 backdrop-blur-md h-screen">
         <div className="flex items-center justify-between w-full  mb-8">
           <p className="text-2xl font-extrabold">LOGO</p>
           <XMarkIcon className="w-8 h-8" onClick={() => setOpen(false)} />
