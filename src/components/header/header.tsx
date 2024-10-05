@@ -57,7 +57,7 @@ export default Header;
 function MobileHeader({ setOpen }: { setOpen: (open: boolean) => void }) {
   return (
     <div className="">
-      <header className="flex flex-col items-center justify-between px-6 py-3 container border-2 rounded-3xl fixed top-0 left-0 right-0 z-50 backdrop-blur-md h-screen">
+      <header className="flex flex-col items-center justify-between px-6 py-3 container border-2 rounded-3xl fixed top-0 left-0 right-0 z-50 backdrop-blur-md h-dvh">
         <div className="flex items-center justify-between w-full  mb-8">
           <p className="text-2xl font-extrabold">LOGO</p>
           <XMarkIcon className="w-8 h-8" onClick={() => setOpen(false)} />

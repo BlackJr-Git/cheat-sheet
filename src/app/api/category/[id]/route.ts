@@ -40,7 +40,7 @@ export async function GET(
     });
 
     // console.log("category", category);
-    
+    // return null
 
     // Retourner les informations de la catégorie avec la pagination
     return NextResponse.json({
@@ -52,6 +52,7 @@ export async function GET(
         totalPages: Math.ceil(totalTools / pageSize),
       },
     });
+
   } catch (error) {
     console.log(error);
     return NextResponse.json(

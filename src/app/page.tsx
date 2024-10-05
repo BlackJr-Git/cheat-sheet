@@ -3,6 +3,7 @@ import {
   Categories,
   BestTools,
   MostRecentTools,
+  HighlightSection,
 } from "@/components";
 import Head from "next/head";
 
@@ -54,6 +55,7 @@ export default function Home() {
       <main className="py-12">
         <HeroSection />
         <Categories />
+        {/* <HighlightSection /> */}
         <BestTools />
         <MostRecentTools />
       </main>
