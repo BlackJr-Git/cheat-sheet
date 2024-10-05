@@ -30,7 +30,7 @@ function ToolsCard({ tool }: { tool: ToolType }) {
       </CardHeader>
 
       <CardContent>
-        <CardTitle>{tool.title}</CardTitle>
+        <CardTitle className="truncate">{tool.title}</CardTitle>
         <span className="line-clamp-2">{tool.description}</span>
       </CardContent>
       <CardFooter className="flex justify-between">

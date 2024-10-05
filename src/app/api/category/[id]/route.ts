@@ -39,9 +39,6 @@ export async function GET(
       where: { categoryId: parseInt(id, 10) },
     });
 
-    // console.log("category", category);
-    // return null
-
     // Retourner les informations de la catégorie avec la pagination
     return NextResponse.json({
       category,

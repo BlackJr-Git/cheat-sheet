@@ -20,6 +20,11 @@ export async function GET(
       return NextResponse.json({ error: "Tool not found" }, { status: 404 });
     }
 
+    // const toolCategories = await prisma.toolCategory.findMany({
+    //   where: { toolId: parseInt(id, 10) },
+    //   include: { category: true },
+    // });
+
     return NextResponse.json(tool);
   } catch (error) {
     console.log(error);
