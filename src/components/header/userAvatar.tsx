@@ -8,7 +8,7 @@ export default function UserAvatar() {
         <AvatarImage src="https://github.com/shadcn.png" />
         <AvatarFallback>Junior Asosa</AvatarFallback>
       </Avatar>
-      <p className="text-lg font-bold text-white">Junior Asosa</p>
+      {/* <p className="text-lg font-bold text-white">Junior Asosa</p> */}
     </div>
   );
 }

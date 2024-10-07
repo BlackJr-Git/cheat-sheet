@@ -5,7 +5,6 @@ import {
   MostRecentTools,
   HighlightSection,
   NewsletterSection,
-  ScrollToTopButton
 } from "@/components";
 import Head from "next/head";
 

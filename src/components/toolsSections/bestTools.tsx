@@ -20,9 +20,9 @@ async function BestTools() {
   const tools: ToolType[] = (await getTools()) || [];
   return (
     <section className="py-24 container ">
-      <div className="flex items-center justify-between">
+      <div className="flex md:flex-row flex-col gap-4 items-center justify-between">
         <h2 className="text-3xl font-bold mb-8">Les meilleurs outils</h2>
-        <Link href={"/tools"} className="flex items-center gap-2 font-semibold text-violet-500">
+        <Link href={"/tools"} className="flex items-center gap-2 font-semibold text-violet-500 mb-8">
           Voir Plus<ArrowLeftLotie />
         </Link>
       </div>

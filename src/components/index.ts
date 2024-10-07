@@ -19,4 +19,5 @@ export { default as NewsletterSection } from "./newsletter/newsletterSection";
 export { default as ArrowLeftLotie } from "./ui/arrowLeftLotie";
 export { default as ArrowUpLotie } from "./ui/arrowUpLotie";
 export { default as ScrollToTopButton } from "./ui/scrollToTop";
+export { default as UserPopover } from "./header/userPopover";
 // export { default as ToolsCard } from "./toolsCard";
