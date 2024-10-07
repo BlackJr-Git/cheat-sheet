@@ -16,11 +16,22 @@ import { CategoryCombobox } from "@/components/dashboard";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { ToolType } from "@/types";
-import { PlusIcon, XCircleIcon , ArrowPathIcon} from "@heroicons/react/24/outline";
+import {
+  PlusIcon,
+  XCircleIcon,
+  ArrowPathIcon,
+} from "@heroicons/react/24/outline";
 
 export default function UpdateToolsDialog({ tool }: { tool: any }) {
   const [categories, setCategories] = useState([] as any[]);
   const [loading, setLoading] = useState(false);
+  const [data, setData] = useState({
+    title: tool.title,
+    description: tool.description,
+    link: tool.link,
+    image: tool.image,
+    published: tool.published,
+  });
 
   const [addedCategory, setAddedCategory] = useState({
     toolId: tool.id,
