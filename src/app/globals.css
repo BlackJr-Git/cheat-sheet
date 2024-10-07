@@ -92,3 +92,9 @@
 .scrollbar-hide:hover::-webkit-scrollbar {
   display: block;
 }
+
+
+/* Newsletter section */
+.clip-custom {
+  clip-path: polygon(0 0, 100% 0, 100% 75%, 75% 75%, 75% 100%, 0% 100%);
+}

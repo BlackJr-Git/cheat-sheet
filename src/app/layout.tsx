@@ -3,7 +3,7 @@ import { Montserrat , Poppins } from "next/font/google";
 import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react"
 import "./globals.css";
-import { Header, Footer } from "@/components";
+import { Header, Footer , ScrollToTopButton } from "@/components";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,6 +28,7 @@ export default function RootLayout({
         {children}
         <Footer />
         <Analytics />
+        <ScrollToTopButton />
       </body>
     </html>
   );

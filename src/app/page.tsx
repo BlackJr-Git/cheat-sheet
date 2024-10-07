@@ -4,6 +4,8 @@ import {
   BestTools,
   MostRecentTools,
   HighlightSection,
+  NewsletterSection,
+  ScrollToTopButton
 } from "@/components";
 import Head from "next/head";
 
@@ -55,9 +57,10 @@ export default function Home() {
       <main className="py-12">
         <HeroSection />
         <Categories />
-        {/* <HighlightSection /> */}
+        <HighlightSection />
         <BestTools />
         <MostRecentTools />
+        <NewsletterSection />
       </main>
     </div>
   );
