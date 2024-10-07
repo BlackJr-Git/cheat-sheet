@@ -20,6 +20,7 @@ import {
   PlusIcon,
   XCircleIcon,
   ArrowPathIcon,
+  PencilSquareIcon,
 } from "@heroicons/react/24/outline";
 
 export default function UpdateToolsDialog({ tool }: { tool: any }) {
@@ -79,8 +80,8 @@ export default function UpdateToolsDialog({ tool }: { tool: any }) {
 
   return (
     <Dialog>
-      <DialogTrigger className="rounded-full p-2 hover:bg-violet-200 cursor-pointer bg-violet-400 w-full">
-        Modifier
+      <DialogTrigger className="rounded-full flex justify-center items-center gap-4 text-white p-2 hover:bg-violet-400 cursor-pointer bg-violet-500 w-full">
+        Modifier <PencilSquareIcon className="w-6 h-6" />
       </DialogTrigger>
       <DialogContent className="max-h-[90vh] overflow-y-scroll scrollbar-hide">
         <DialogHeader>

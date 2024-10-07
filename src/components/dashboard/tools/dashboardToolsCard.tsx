@@ -8,7 +8,6 @@ import {
 } from "@/components/ui/card";
 import Image from "next/image";
 import { ToolType } from "@/types";
-import { Button } from "@/components/ui/button";
 import ToolDetails from "@/components/dialog/toolDetails";
 import UpdateToolsDialog from "./updateTools";
 //   import { LikeButton, ToolDetails } from ".";

@@ -9,7 +9,7 @@ async function Page({ params }: { params: { categoryId: string } }) {
   async function getCatagories() {
     try {
       const { data } = await axios.get(
-        `${apiUrl}/api/category/${categoryId}?page=1&pageSize=12`
+        `${apiUrl}/api/category/${categoryId}?page=1&pageSize=32`
       );
       return data;
     } catch (error) {
@@ -25,13 +25,13 @@ async function Page({ params }: { params: { categoryId: string } }) {
       <section className="relative mt-24">
         <div className="p-12 bg-green-500/30 border-2 border-green-400 flex justify-center items-center flex-col gap-4 rounded-xl backdrop-blur-sm">
           <h1 className="text-3xl font-semibold">
-            {category.icon} {category.name}
+            {category?.icon} {category?.name}
           </h1>
           <p className="text-lg">
             <span className="text-white bg-violet-500 p-2">
               {data?.pagination?.total} outils
             </span>{" "}
-            disponibles dans la categorie {category.name} . Trouvez ce dont vous
+            disponibles dans la categorie {category?.name} . Trouvez ce dont vous
             avez besoin
           </p>
         </div>
@@ -54,7 +54,7 @@ async function Page({ params }: { params: { categoryId: string } }) {
 
       <section className="py-12">
         <div className="flex items-center justify-center flex-wrap gap-6">
-          {category.tools?.map((tool: any) => (
+          {category?.tools?.map((tool: any) => (
             <ToolsCard key={tool.tool.id} tool={tool.tool} />
           ))}
         </div>
