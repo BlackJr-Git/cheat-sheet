@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { ToolType, getToolsType } from "@/types";
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
-export default function page() {
+export default function Page() {
   const [data, setData] = useState({} as getToolsType);
 
   useEffect(() => {
