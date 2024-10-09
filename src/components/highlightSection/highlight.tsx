@@ -9,7 +9,7 @@ const tool = {
     "https://res.cloudinary.com/devhqdrwl/image/upload/v1727770249/cheat-sheet/Screenshot_2024-10-01_085640_ibnhgg.png",
   description:
     "Plateforme de développement no-code offrant des outils pour créer, tester et déployer des applications sans écrire de code, avec des intégrations pour plusieurs services.",
-  url: "https://www.schemhttps://v0.dev/ecolor.com/",
+  url: "https://v0.dev/",
   published: true,
   userLikes: [],
 };

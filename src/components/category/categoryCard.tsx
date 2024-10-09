@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowDownRight } from "lucide-react";
-function categoryCard({
+function CategoryCard({
   category,
 }: {
   category: { id: number; name: string; icon: string; tools: [] };
@@ -25,4 +25,4 @@ function categoryCard({
   );
 }
 
-export default categoryCard;
+export default CategoryCard;

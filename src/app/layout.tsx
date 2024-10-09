@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react"
 import "./globals.css";
 import { Header, Footer , ScrollToTopButton } from "@/components";
+import { Toaster } from "@/components/ui/toaster"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,6 +30,7 @@ export default function RootLayout({
         <Footer />
         <Analytics />
         <ScrollToTopButton />
+        <Toaster />
       </body>
     </html>
   );
