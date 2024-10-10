@@ -1,19 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import Image from "next/image";
-import LoginButton from "./LoginButton";
-
-// import { signIn } from "next-auth/react";
-import authConfig from "../../../pages/api/auth/[...nextauth]";
-import { getServerSession } from "next-auth";
 import Link from "next/link";
+import React from "react";
+import Image from "next/image";
 
-export default async function Login() {
-  const session = await getServerSession(authConfig);
-
+export default function SignUp() {
   return (
-    <div className="flex  w-full items-center justify-center mt-12 bg-slate-100 p-8 rounded-3xl">
-      <div className="w-1/2 h-96">
+    <div className="flex w-full items-center justify-center mt-12 bg-slate-100 p-8 rounded-3xl">
+      <div className="w-1/2 h-96 rounded-2xl">
         <iframe
           className="w-full h-full"
           title="Login"
@@ -23,7 +17,7 @@ export default async function Login() {
 
       <div className="w-1/2 flex flex-col justify-center items-center border-l-2 border-violet-500">
         <div className="w-2/3 flex flex-col gap-4 mb-8">
-          <h1 className="text-3xl font-bold">Bon retour 👋</h1>
+          <h1 className="text-3xl font-bold">Bienvenue 👋</h1>
           <p className="text-lg">
             Enregistrez vos ressources favorites pour y accéder facilement.
           </p>
@@ -32,6 +26,15 @@ export default async function Login() {
           action=""
           className="w-full flex flex-col justify-center items-center gap-2"
         >
+          <div className="w-2/3">
+            {/* <label htmlFor="email">Email</label> */}
+            <Input
+              type="email"
+              id="email"
+              placeholder="🧑🏾‍💻  Entrer votre nom"
+              className="mt-2 w-full"
+            />
+          </div>
           <div className="w-2/3">
             {/* <label htmlFor="email">Email</label> */}
             <Input
@@ -50,9 +53,8 @@ export default async function Login() {
               className="mt-2 w-full"
             />
           </div>
-          <p className="w-2/3 text-right">Mot de passe oublie ?</p>
           <div className="w-2/3">
-            <Button className="w-full mt-2">Se connecter</Button>
+            <Button className="w-full mt-2"> S&apos;enregistrer </Button>
           </div>
         </form>
 
@@ -63,22 +65,28 @@ export default async function Login() {
         </div>
 
         <div className="w-2/3 flex gap-4 items-center justify-center">
-          <Button className="w-1/2 flex items-center justify-center gap-2" variant={"outline"}>
+          <Button
+            className="w-1/2 flex items-center justify-center gap-2"
+            variant={"outline"}
+          >
             <Image src="/google.svg" width={20} height={20} alt="logo" /> Google
           </Button>
-          <Button className="w-1/2 flex items-center justify-center gap-2" variant={"outline"}>
+          <Button
+            className="w-1/2 flex items-center justify-center gap-2"
+            variant={"outline"}
+          >
             <Image src="/github.svg" width={20} height={20} alt="logo" /> GitHub
           </Button>
         </div>
 
         <div className="w-2/3 flex gap-4 items-center justify-center mt-6">
           <p>
-            Vous n&apos;avez pas encore de compte ?{" "}
+            Vous avez déjà un compte ?
             <Link
-              href="/auth/sign-up"
+              href="/auth/sign-in"
               className="text-violet-500 font-semibold ml-4"
             >
-              S&apos;inscrire
+              Se connecter
             </Link>{" "}
           </p>
         </div>
