@@ -150,7 +150,7 @@ function Page({ params }: { params: { categoryId: string } }) {
         </div>
 
         {/* Loader pour déclencher le scroll infini */}
-        {loading && <p>Chargement...</p>}
+        {loading && <Loader />}
         <div ref={loader} className="h-5 w-full" />
       </section>
     </main>
@@ -158,3 +158,14 @@ function Page({ params }: { params: { categoryId: string } }) {
 }
 
 export default Page;
+
+function Loader() {
+  return (
+    <div className="inset-0 bg-white flex items-center justify-center z-50 mt-12">
+      <div className="loader border-8 border-gray-200 border-t-8 border-t-violet-500 rounded-full w-16 h-16 animate-spin">
+        <span className="sr-only">Loading...</span>
+      </div>
+      <p className="text-lg font-semibold ml-4">Chargement</p>
+    </div>
+  );
+}
