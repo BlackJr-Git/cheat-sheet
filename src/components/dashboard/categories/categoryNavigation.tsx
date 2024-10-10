@@ -12,7 +12,7 @@ export default function CategoryNavigation() {
       </div>
       <div>{/* <FilterSelect /> */}</div>
       <div>{/* <CategorySelect /> */}</div>
-      <div>
+      <div className="w-full">
         <AddCategory />
       </div>
     </nav>

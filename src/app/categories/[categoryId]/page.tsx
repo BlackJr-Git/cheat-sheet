@@ -1,24 +1,114 @@
+"use client";
 import { ToolsCard } from "@/components";
-import { ToolType } from "@/types";
+import { CategoryType } from "@/types";
 import axios from "axios";
 import Image from "next/image";
+import { useState, useEffect, useRef } from "react";
+import { useToast } from "@/hooks/use-toast";
+
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-async function Page({ params }: { params: { categoryId: string } }) {
+
+function Page({ params }: { params: { categoryId: string } }) {
   const { categoryId } = params;
+  const { toast } = useToast();
+  const [category, setCategory] = useState({} as CategoryType);
+  const [tools, setTools] = useState<any[]>([]); // Liste des outils
+  const [page, setPage] = useState<number>(1); // Numéro de page pour la pagination
+  const [loading, setLoading] = useState<boolean>(false); // Chargement
+  const [hasMore, setHasMore] = useState<boolean>(true); // Indicateur s'il reste des données à charger
+  const loader = useRef<HTMLDivElement>(null); // Référence pour l'observateur
+  const isFirstLoad = useRef(true); // Ref pour indiquer si c'est le premier chargement
 
-  async function getCatagories() {
-    try {
-      const { data } = await axios.get(
-        `${apiUrl}/api/category/${categoryId}?page=1&pageSize=32`
-      );
-      return data;
-    } catch (error) {
-      return [];
+  const [data, setData] = useState(
+    {} as {
+      category: CategoryType;
+      pagination: {
+        total: number;
+        totalPages: number;
+        pageSize: number;
+        page: number;
+      };
     }
-  }
+  );
 
-  const data = await getCatagories();
-  const category = data.category;
+  // Récupérer les données d'une page
+  const getCategory = async (pageNum: number, replace = false) => {
+    try {
+      setLoading(true);
+      const { data } = await axios.get(
+        `${apiUrl}/api/category/${categoryId}?page=${pageNum}&pageSize=8`
+      );
+
+      setCategory(data.category);
+
+      // Ajouter les nouveaux outils à la liste existante sans les remplacer,
+      // sauf si on utilise replace (pour le premier chargement)
+      setTools((prevTools) =>
+        replace ? data.category.tools : [...prevTools, ...data.category.tools]
+      );
+      setData(data);
+
+      // Vérifier si on a atteint la dernière page
+      if (pageNum >= data.pagination.totalPages) {
+        setHasMore(false);
+      }
+    } catch (error) {
+      console.error(error);
+      toast({
+        title: "Une erreur est survenue",
+        description: "Impossible de charger les données",
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Charger la première page dès le chargement du composant
+  useEffect(() => {
+    // On remplace les outils existants pour la première page
+    getCategory(1, true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [categoryId]);
+
+  // Intersection Observer pour charger plus d'outils lorsque le bas de page est atteint
+  useEffect(() => {
+    const loaderElement = loader.current; // Copier la référence du loader actuel
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (
+          entries[0].isIntersecting &&
+          hasMore &&
+          !loading &&
+          !isFirstLoad.current
+        ) {
+          setPage((prevPage) => prevPage + 1); // Incrémenter la page
+        }
+      },
+      { threshold: 1.0 } // Déclenche quand on atteint le bas de page
+    );
+
+    if (loaderElement) {
+      observer.observe(loaderElement); // Observer l'élément
+    }
+
+    return () => {
+      if (loaderElement) {
+        observer.unobserve(loaderElement); // Désactiver l'observation
+      }
+    };
+  }, [hasMore, loading]);
+
+  // Charger les outils supplémentaires lorsque la page change
+  useEffect(() => {
+    if (page > 1) {
+      getCategory(page);
+    } else {
+      isFirstLoad.current = false; // Après la première page, désactiver le premier chargement
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [page]);
 
   return (
     <main className="container my-4">
@@ -31,8 +121,8 @@ async function Page({ params }: { params: { categoryId: string } }) {
             <span className="text-white bg-violet-500 p-2">
               {data?.pagination?.total} outils
             </span>{" "}
-            disponibles dans la categorie {category?.name} . Trouvez ce dont vous
-            avez besoin
+            disponibles dans la catégorie {category?.name}. Trouvez ce dont vous
+            avez besoin.
           </p>
         </div>
 
@@ -54,12 +144,17 @@ async function Page({ params }: { params: { categoryId: string } }) {
 
       <section className="py-12">
         <div className="flex items-center justify-center flex-wrap gap-6">
-          {category?.tools?.map((tool: any) => (
+          {tools.map((tool: any) => (
             <ToolsCard key={tool.tool.id} tool={tool.tool} />
           ))}
         </div>
+
+        {/* Loader pour déclencher le scroll infini */}
+        {loading && <p>Chargement...</p>}
+        <div ref={loader} className="h-5 w-full" />
       </section>
     </main>
   );
 }
+
 export default Page;

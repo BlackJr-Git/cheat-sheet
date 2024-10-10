@@ -31,7 +31,10 @@ export async function GET(
     });
 
     if (!category) {
-      return NextResponse.json({ error: "Category not found" }, { status: 404 });
+      return NextResponse.json(
+        { error: "Category not found" },
+        { status: 404 }
+      );
     }
 
     // Compter le nombre total d'outils pour cette catégorie
@@ -49,7 +52,36 @@ export async function GET(
         totalPages: Math.ceil(totalTools / pageSize),
       },
     });
+  } catch (error) {
+    console.log(error);
+    return NextResponse.json(
+      { error: "Internal Server Error" },
+      { status: 500 }
+    );
+  }
+}
 
+export async function DELETE(
+  req: NextRequest,
+  { params }: { params: { id: string } }
+) {
+  try {
+    const { id } = params; // Requête Prisma pour supprimer la catégorie avec tous ses outils
+    const deletedCategory = await prisma.category.delete({
+      where: { id: parseInt(id, 10) },
+    });
+
+    if (!deletedCategory) {
+      return NextResponse.json(
+        { error: "Category not found" },
+        { status: 404 }
+      );
+    }
+
+    return NextResponse.json({
+      message: "Category deleted",
+      category: deletedCategory,
+    });
   } catch (error) {
     console.log(error);
     return NextResponse.json(
