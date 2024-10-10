@@ -35,8 +35,8 @@ export default function Highlight() {
           <h3 className="text-2xl font-bold mb-4">{tool.title}</h3>
           <p className="text-lg mb-4">{tool.description}</p>
 
-          <div className="flex md:flex-row flex-col gap-4">
-            <Button className="w-full text-lg grow">
+          <div className="flex md:flex-row flex-col gap-4 justify-end">
+            <Button className="text-lg">
               <a
                 href={tool.url}
                 target="_blank"

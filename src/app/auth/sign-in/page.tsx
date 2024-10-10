@@ -12,8 +12,8 @@ export default async function Login() {
   const session = await getServerSession(authConfig);
 
   return (
-    <div className="flex  w-full items-center justify-center mt-12 bg-slate-100 p-8 rounded-3xl">
-      <div className="w-1/2 h-96">
+    <div className="flex md:flex-row flex-col w-full items-center justify-center mt-12 bg-slate-100 md:p-8 p-4 rounded-3xl">
+      <div className="md:w-1/2 h-96">
         <iframe
           className="w-full h-full"
           title="Login"
@@ -21,8 +21,8 @@ export default async function Login() {
         ></iframe>
       </div>
 
-      <div className="w-1/2 flex flex-col justify-center items-center border-l-2 border-violet-500">
-        <div className="w-2/3 flex flex-col gap-4 mb-8">
+      <div className="md:w-1/2 flex flex-col justify-center items-center md:border-l-2 md:border-violet-500">
+        <div className="md:w-2/3 flex flex-col gap-4 mb-8">
           <h1 className="text-3xl font-bold">Bon retour 👋</h1>
           <p className="text-lg">
             Enregistrez vos ressources favorites pour y accéder facilement.
@@ -32,7 +32,7 @@ export default async function Login() {
           action=""
           className="w-full flex flex-col justify-center items-center gap-2"
         >
-          <div className="w-2/3">
+          <div className="md:w-2/3 w-full">
             {/* <label htmlFor="email">Email</label> */}
             <Input
               type="email"
@@ -41,7 +41,7 @@ export default async function Login() {
               className="mt-2 w-full"
             />
           </div>
-          <div className="w-2/3">
+          <div className="md:w-2/3 w-full">
             {/* <label htmlFor="password">Password</label> */}
             <Input
               type="password"
@@ -50,29 +50,35 @@ export default async function Login() {
               className="mt-2 w-full"
             />
           </div>
-          <p className="w-2/3 text-right">Mot de passe oublie ?</p>
-          <div className="w-2/3">
+          <p className="md:w-2/3 text-right">Mot de passe oublie ?</p>
+          <div className="md:w-2/3 w-full">
             <Button className="w-full mt-2">Se connecter</Button>
           </div>
         </form>
 
-        <div className="flex items-center justify-center w-1/2 my-8">
+        <div className="flex items-center justify-center md:w-1/2 my-8">
           <div className="h-[2px] w-full bg-slate-200"></div>
           <p className="mx-4"> ou </p>
           <div className="h-[2px] w-full bg-slate-200"></div>
         </div>
 
-        <div className="w-2/3 flex gap-4 items-center justify-center">
-          <Button className="w-1/2 flex items-center justify-center gap-2" variant={"outline"}>
+        <div className="md:w-2/3 w-full flex gap-4 items-center justify-center">
+          <Button
+            className="md:w-1/2 w-full flex items-center justify-center gap-2"
+            variant={"outline"}
+          >
             <Image src="/google.svg" width={20} height={20} alt="logo" /> Google
           </Button>
-          <Button className="w-1/2 flex items-center justify-center gap-2" variant={"outline"}>
+          <Button
+            className="md:w-1/2 w-full flex items-center justify-center gap-2"
+            variant={"outline"}
+          >
             <Image src="/github.svg" width={20} height={20} alt="logo" /> GitHub
           </Button>
         </div>
 
-        <div className="w-2/3 flex gap-4 items-center justify-center mt-6">
-          <p>
+        <div className="md:w-2/3 flex gap-4 items-center justify-center mt-6">
+          <p className="text-center">
             Vous n&apos;avez pas encore de compte ?{" "}
             <Link
               href="/auth/sign-up"

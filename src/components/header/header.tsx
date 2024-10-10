@@ -27,12 +27,12 @@ function Header() {
   //   updatedAt: new Date(),
   // };
 
-  useEffect(() => {
-    if (currentUser) {
-      return;
-    }
-    // setCurrentUser(user);
-  }, [currentUser]);
+  // useEffect(() => {
+  //   if (currentUser) {
+  //     return;
+  //   }
+  //   setCurrentUser(user);
+  // }, [currentUser]);
 
   if (open) {
     return <MobileHeader setOpen={setOpen} />;
@@ -115,7 +115,7 @@ function MobileHeader({ setOpen }: { setOpen: (open: boolean) => void }) {
 
   return (
     <div className="">
-      <header className="flex flex-col items-center justify-between px-6 py-3 container border-2 rounded-3xl fixed top-0 left-0 right-0 z-50 backdrop-blur-md h-dvh">
+      <header className="flex flex-col w-full items-center justify-between px-6 py-3 container border-2 fixed top-0 left-0 right-0 z-50 backdrop-blur-3xl h-dvh">
         <div className="flex items-center justify-between w-full  mb-8">
           <p className="text-2xl font-extrabold">LOGO</p>
           <XMarkIcon className="w-8 h-8" onClick={() => setOpen(false)} />
@@ -140,13 +140,20 @@ function MobileHeader({ setOpen }: { setOpen: (open: boolean) => void }) {
             <span className="absolute left-0 bottom-0 w-full h-[2px] bg-green-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
           </div>
         </nav>
-        <div className="items-center justify-center gap-3 flex flex-col w-full mt-8">
+
+        <div className="flex w-full flex-col gap-4 mb-12">
           {currentUser ? (
             <UserPopover user={currentUser} />
           ) : (
             <>
-              <Button variant={"outline"}>Connexion</Button>
-              <Button>S&apos;inscrire</Button>
+              <Link href={"/auth/sign-up"} className="w-full inline-block">
+                <Button className="w-full">S&apos;inscrire</Button>{" "}
+              </Link>
+              <Link href={"/auth/sign-in"} className="w-full">
+                <Button variant={"outline"} className="w-full">
+                  Connexion
+                </Button>
+              </Link>
             </>
           )}
         </div>
