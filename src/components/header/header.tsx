@@ -18,21 +18,21 @@ function Header() {
     setCurrentUser: (currentUser: userType) => void;
   } = useStore() as StoreType;
 
-  const user = {
-    id: 1,
-    name: "John Doe",
-    email: "lqfZg@example.com",
-    image: "https://example.com/avatar.jpg",
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  };
+  // const user = {
+  //   id: 1,
+  //   name: "John Doe",
+  //   email: "lqfZg@example.com",
+  //   image: "https://example.com/avatar.jpg",
+  //   createdAt: new Date(),
+  //   updatedAt: new Date(),
+  // };
 
   useEffect(() => {
     if (currentUser) {
       return;
     }
-    setCurrentUser(user);
-  }, []);
+    // setCurrentUser(user);
+  }, [currentUser]);
 
   if (open) {
     return <MobileHeader setOpen={setOpen} />;
@@ -67,8 +67,12 @@ function Header() {
             <UserPopover user={currentUser} />
           ) : (
             <>
-              <Button variant={"outline"}>Connexion</Button>
-              <Button>S&apos;inscrire</Button>
+              <Link href={"/auth/sign-in"}>
+                <Button variant={"outline"}>Connexion</Button>
+              </Link>
+              <Link href={"/auth/sign-up"}>
+                <Button>S&apos;inscrire</Button>{" "}
+              </Link>
             </>
           )}
         </div>
@@ -93,21 +97,22 @@ function MobileHeader({ setOpen }: { setOpen: (open: boolean) => void }) {
     setCurrentUser: (currentUser: userType) => void;
   } = useStore() as StoreType;
 
-  const user = {
-    id: 1,
-    name: "John Doe",
-    email: "lqfZg@example.com",
-    image: "https://example.com/avatar.jpg",
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  };
+  // const user = {
+  //   id: 1,
+  //   name: "John Doe",
+  //   email: "lqfZg@example.com",
+  //   image: "https://example.com/avatar.jpg",
+  //   createdAt: new Date(),
+  //   updatedAt: new Date(),
+  // };
 
   useEffect(() => {
     if (currentUser) {
       return;
     }
-    setCurrentUser(user);
-  }, []);
+    // setCurrentUser(user);
+  }, [currentUser]);
+
   return (
     <div className="">
       <header className="flex flex-col items-center justify-between px-6 py-3 container border-2 rounded-3xl fixed top-0 left-0 right-0 z-50 backdrop-blur-md h-dvh">
