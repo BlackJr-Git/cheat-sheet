@@ -22,9 +22,9 @@ export const metadata = {
     siteName: "The Cheat Sheet",
     images: [
       {
-        url: "https://the-cheat-sheet.vercel.app/homepage-1.png",
-        width: 1419,
-        height: 725,
+        url: "https://the-cheat-sheet.vercel.app/homepage-2.png",
+        width: 1200,
+        height: 630,
         alt: "The Cheat Sheet Homepage",
       },
     ],
