@@ -1,5 +1,5 @@
 "use client";
-import { ToolsCard } from "@/components";
+import { ToolsCard, SkeletonCard } from "@/components";
 import { CategoryType } from "@/types";
 import axios from "axios";
 import Image from "next/image";
@@ -7,6 +7,8 @@ import { useState, useEffect, useRef } from "react";
 import { useToast } from "@/hooks/use-toast";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
+const skeletons: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
 function Page({ params }: { params: { categoryId: string } }) {
   const { categoryId } = params;
@@ -119,7 +121,7 @@ function Page({ params }: { params: { categoryId: string } }) {
           </h1>
           <p className="text-lg">
             <span className="text-white bg-violet-500 p-2">
-              {data?.pagination?.total} outils
+              {data?.pagination?.total || 0} outils
             </span>{" "}
             disponibles dans la catégorie {category?.name}. Trouvez ce dont vous
             avez besoin.
@@ -150,7 +152,13 @@ function Page({ params }: { params: { categoryId: string } }) {
         </div>
 
         {/* Loader pour déclencher le scroll infini */}
-        {loading && <Loader />}
+        {loading && (
+          <div className="flex items-center justify-center flex-wrap gap-6 mt-8">
+            {skeletons.map((tool: number) => (
+              <SkeletonCard key={tool} />
+            ))}
+          </div>
+        )}
         <div ref={loader} className="h-5 w-full" />
       </section>
     </main>
