@@ -1,0 +1,16 @@
+services:
+  junior_cheat_sheet:
+    container_name: junior_cheat_sheet
+    image: node:18
+    ports:
+      - "8098:3000"
+    working_dir: /app
+    volumes:
+      - ./:/app/
+    # extra_hosts:
+    #   - "api-creer.local.insse.ca:192.168.2.30"
+    #   - "auth.pme.cd:192.168.2.215"
+    env_file:
+      - ./.env
+    command: >
+      /bin/bash -c "yarn install && yarn dev"
