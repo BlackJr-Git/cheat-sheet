@@ -14,7 +14,8 @@ import UpdateToolsDialog from "./updateTools";
 
 export default function DashboardToolsCard({ tool }: { tool: ToolType }) {
   return (
-    <Card className="max-w-52">
+    <Card className="flex items-center justify-between w-[48%]">
+      <div className="flex items-center justify-center">
       <CardHeader>
         <CardDescription>
           <Image
@@ -22,17 +23,20 @@ export default function DashboardToolsCard({ tool }: { tool: ToolType }) {
             className="rounded-lg"
             src={tool.image}
             alt={tool.title}
-            width={300}
-            height={300}
+            width={200}
+            height={200}
           />
         </CardDescription>
       </CardHeader>
 
-      <CardContent>
-        <CardTitle className="truncate">{tool.title}</CardTitle>
-      </CardContent>
-      <CardFooter className="flex flex-col gap-2">
+      <CardContent className="flex items-start justify-center flex-col gap-2">
+        <CardTitle className="truncate px-2 w-52">{tool.title}</CardTitle>
         <ToolDetails tool={tool} />
+      </CardContent>
+      </div>
+      
+      <CardFooter className="flex items-center justify-center gap-8">
+        
         <UpdateToolsDialog tool={tool} />
       </CardFooter>
     </Card>

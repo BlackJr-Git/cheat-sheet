@@ -29,7 +29,7 @@ export default function Page() {
   }, []);
 
   return (
-    <div className="w-full bg-slate-100 grow rounded-2xl p-4 max-h-[90%] flex gap-4">
+    <div className="w-full bg-slate-100 grow rounded-2xl p-4 max-h-[88%] flex gap-4">
       <div className="flex items-center flex-wrap gap-4 w-full justify-center overflow-y-scroll scrollbar-hide">
         {tools?.map((tool) => (
           <DashboardToolsCard key={tool.id} tool={tool} />
