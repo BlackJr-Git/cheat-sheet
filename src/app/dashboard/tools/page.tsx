@@ -116,7 +116,7 @@ export default function DashboardToolsPage() {
 }
 
 
-export function SkeletonDashboardCard() {
+function SkeletonDashboardCard() {
   return (
     <div className="w-[48%] flex gap-2 items-center justify-center">
       <Skeleton className="h-24 w-72 rounded-xl bg-slate-300" />
