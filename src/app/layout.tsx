@@ -1,16 +1,24 @@
 import type { Metadata } from "next";
-import { Montserrat , Poppins } from "next/font/google";
+import { Montserrat, Poppins } from "next/font/google";
 import { Inter } from "next/font/google";
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
-import { Header, Footer , ScrollToTopButton } from "@/components";
-import { Toaster } from "@/components/ui/toaster"
+import { Header, Footer, ScrollToTopButton } from "@/components";
+import { Toaster } from "@/components/ui/toaster";
+import {
+  ClerkProvider,
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
+import { frFR } from "@clerk/localizations";
 
 const inter = Inter({ subsets: ["latin"] });
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
-// const poppins = Poppins({ subsets: ["latin"] }); 
+// const poppins = Poppins({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Cheat Sheet",
@@ -23,15 +31,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr">
-      <body className={montserrat.className}>
-        <Header />
-        {children}
-        <Footer />
-        <Analytics />
-        <ScrollToTopButton />
-        <Toaster />
-      </body>
-    </html>
+    <ClerkProvider localization={frFR}>
+      <html lang="fr">
+        <body className={montserrat.className}>
+          <Header />
+          {children}
+          <Footer />
+          <Analytics />
+          <ScrollToTopButton />
+          <Toaster />
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

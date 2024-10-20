@@ -6,14 +6,15 @@ import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import { useToast } from "@/hooks/use-toast";
 
-const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 const skeletons: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
-function Page({ params }: { params: { categoryId: string } }) {
+function ToolsPage({ params }: { params: { categoryId: string } }) {
   const { categoryId } = params;
   const { toast } = useToast();
   const [category, setCategory] = useState({} as CategoryType);
   const [tools, setTools] = useState<any[]>([]); // Liste des outils
+  
   const [page, setPage] = useState<number>(1); // Numéro de page pour la pagination
   const [loading, setLoading] = useState<boolean>(false); // Chargement
   const [hasMore, setHasMore] = useState<boolean>(true); // Indicateur s'il reste des données à charger
@@ -27,7 +28,7 @@ function Page({ params }: { params: { categoryId: string } }) {
     try {
       setLoading(true);
       const { data } = await axios.get(
-        `${apiUrl}/api/tools/?pages=${pageNum}&number=8&orderby=desc`
+        `${API_URL}/api/tools/?pages=${pageNum}&number=8&orderby=desc`
       );
 
       setCategory(data.category);
@@ -148,21 +149,10 @@ function Page({ params }: { params: { categoryId: string } }) {
             ))}
           </div>
         )}
-        <div ref={loader} className="h-5 w-full" />
+        <div ref={loader} className="h-1 w-full" />
       </section>
     </main>
   );
 }
 
-export default Page;
-
-function Loader() {
-  return (
-    <div className="inset-0 bg-white flex items-center justify-center z-50 mt-12">
-      <div className="loader border-8 border-gray-200 border-t-8 border-t-violet-500 rounded-full w-16 h-16 animate-spin">
-        <span className="sr-only">Loading...</span>
-      </div>
-      <p className="text-lg font-semibold ml-4">Chargement</p>
-    </div>
-  );
-}
+export default ToolsPage;

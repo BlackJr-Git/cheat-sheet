@@ -6,6 +6,13 @@ import { useState, useEffect } from "react";
 import { useStore, StoreType } from "@/appStore";
 import { userType } from "@/types";
 import { UserPopover } from "@/components";
+import {
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
 
 function Header() {
   const [open, setOpen] = useState(false);
@@ -63,6 +70,28 @@ function Header() {
         </nav>
 
         <div className="items-center justify-center gap-3 md:flex hidden">
+          <SignedOut>
+            <SignInButton>
+              <Button variant={"outline"}>Connexion</Button>
+            </SignInButton>
+
+            <SignUpButton>
+              <Button>S&apos;inscrire</Button>
+            </SignUpButton>
+          </SignedOut>
+
+          <SignedIn>
+            <UserButton
+              appearance={{
+                elements: {
+                  formButtonPrimary: "bg-violet-500 hover:bg-violet-600",
+                },
+              }}
+            />
+          </SignedIn>
+        </div>
+
+        {/* <div className="items-center justify-center gap-3 md:flex hidden">
           {currentUser ? (
             <UserPopover user={currentUser} />
           ) : (
@@ -75,7 +104,7 @@ function Header() {
               </Link>
             </>
           )}
-        </div>
+        </div> */}
 
         <Bars3CenterLeftIcon
           className="w-8 h-8 md:hidden"
