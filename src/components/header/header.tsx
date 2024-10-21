@@ -14,6 +14,18 @@ import {
   UserButton,
 } from "@clerk/nextjs";
 
+const DotIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 512 512"
+      fill="currentColor"
+    >
+      <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z" />
+    </svg>
+  );
+};
+
 function Header() {
   const [open, setOpen] = useState(false);
 
@@ -84,10 +96,23 @@ function Header() {
             <UserButton
               appearance={{
                 elements: {
-                  formButtonPrimary: "bg-violet-500 hover:bg-violet-600",
+                  userButtonPopoverCard: "bg-violet-100",
                 },
               }}
-            />
+            >
+              <UserButton.MenuItems>
+                <UserButton.Action
+                  label="Open chat"
+                  labelIcon={<DotIcon />}
+                  onClick={() => alert("init chat")}
+                />
+                <UserButton.Link
+                  label="Create organization"
+                  labelIcon={<DotIcon />}
+                  href="/create-organization"
+                />
+              </UserButton.MenuItems>
+            </UserButton>
           </SignedIn>
         </div>
 

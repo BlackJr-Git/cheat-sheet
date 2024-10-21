@@ -7,10 +7,6 @@ import { Header, Footer, ScrollToTopButton } from "@/components";
 import { Toaster } from "@/components/ui/toaster";
 import {
   ClerkProvider,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
 } from "@clerk/nextjs";
 import { frFR } from "@clerk/localizations";
 
