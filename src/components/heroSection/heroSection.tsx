@@ -3,6 +3,7 @@ import { Button } from "../ui/button";
 import Image from "next/image";
 import { ToolBubble, MottionBubble } from "@/components";
 import { ChangingWords } from "../animation";
+import SearchBar from "./searchBar";
 
 function HeroSection() {
   return (
@@ -17,10 +18,11 @@ function HeroSection() {
         </span>
       </h1>
       <div className="w-[90%] px-6 bg-blue-100/0 rounded-xl flex md:flex-row flex-col gap-3 items-center justify-center">
-        <Input
+        {/* <Input
           className="md:w-1/2 h-12"
           placeholder="Rechercher par category"
-        />{" "}
+        />{" "} */}
+        <SearchBar />
         {/* <Button className="md:w-48 w-full h-12 flex gap-3 text-lg">
           {" "}
           <span>🔍</span> Rechercher
