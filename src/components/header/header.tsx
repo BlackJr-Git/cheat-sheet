@@ -1,7 +1,12 @@
 "use client";
 import Link from "next/link";
 import { Button } from "../ui/button";
-import { Bars3CenterLeftIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import {
+  Bars3CenterLeftIcon,
+  XMarkIcon,
+  BookmarkIcon,
+  LightBulbIcon,
+} from "@heroicons/react/24/outline";
 import { useState, useEffect } from "react";
 import { useStore, StoreType } from "@/appStore";
 import { userType } from "@/types";
@@ -13,18 +18,6 @@ import {
   SignedOut,
   UserButton,
 } from "@clerk/nextjs";
-
-const DotIcon = () => {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 512 512"
-      fill="currentColor"
-    >
-      <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z" />
-    </svg>
-  );
-};
 
 function Header() {
   const [open, setOpen] = useState(false);
@@ -101,15 +94,16 @@ function Header() {
               }}
             >
               <UserButton.MenuItems>
-                <UserButton.Action
-                  label="Open chat"
-                  labelIcon={<DotIcon />}
-                  onClick={() => alert("init chat")}
+                <UserButton.Link
+                  label="Favoris"
+                  labelIcon={<BookmarkIcon />}
+                  href="/suggest"
+                  // onClick={() => alert("init chat")}
                 />
                 <UserButton.Link
-                  label="Create organization"
-                  labelIcon={<DotIcon />}
-                  href="/create-organization"
+                  label="Suggestions"
+                  labelIcon={<LightBulbIcon />}
+                  href="/suggest"
                 />
               </UserButton.MenuItems>
             </UserButton>
@@ -195,7 +189,43 @@ function MobileHeader({ setOpen }: { setOpen: (open: boolean) => void }) {
           </div>
         </nav>
 
-        <div className="flex w-full flex-col gap-4 mb-12">
+        <div className="flex items-center w-full flex-col gap-4 mb-12">
+          <SignedOut>
+            <SignInButton>
+              <Button variant={"outline"}>Connexion</Button>
+            </SignInButton>
+
+            <SignUpButton>
+              <Button>S&apos;inscrire</Button>
+            </SignUpButton>
+          </SignedOut>
+
+          <SignedIn>
+            <UserButton
+              appearance={{
+                elements: {
+                  userButtonPopoverCard: "bg-violet-100",
+                },
+              }}
+            >
+              <UserButton.MenuItems>
+                <UserButton.Link
+                  label="Favoris"
+                  labelIcon={<BookmarkIcon />}
+                  href="/suggest"
+                  // onClick={() => alert("init chat")}
+                />
+                <UserButton.Link
+                  label="Suggestions"
+                  labelIcon={<LightBulbIcon />}
+                  href="/suggest"
+                />
+              </UserButton.MenuItems>
+            </UserButton>
+          </SignedIn>
+        </div>
+
+        {/* <div className="flex w-full flex-col gap-4 mb-12">
           {currentUser ? (
             <UserPopover user={currentUser} />
           ) : (
@@ -210,7 +240,7 @@ function MobileHeader({ setOpen }: { setOpen: (open: boolean) => void }) {
               </Link>
             </>
           )}
-        </div>
+        </div> */}
       </header>
     </div>
   );
