@@ -5,10 +5,18 @@ import { useState, useEffect } from "react";
 import { searchCategories } from "./searchActions";
 import { Input } from "../ui/input";
 import { useForm } from "react-hook-form";
-import { CategoryType } from "@/types";
+// import { CategoryType } from "@/types";
 import { Card } from "../ui/card";
 import Link from "next/link";
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
+
+
+type CategoryType = {
+  id: number;
+  name: string;
+  icon: string;
+};
+
 
 export default function SearchBar() {
   const [query, setQuery] = useState<string>("");
