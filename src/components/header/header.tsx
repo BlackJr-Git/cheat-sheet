@@ -97,7 +97,7 @@ function Header() {
                 <UserButton.Link
                   label="Favoris"
                   labelIcon={<BookmarkIcon />}
-                  href="/suggest"
+                  href="/bookmark"
                   // onClick={() => alert("init chat")}
                 />
                 <UserButton.Link
@@ -212,7 +212,7 @@ function MobileHeader({ setOpen }: { setOpen: (open: boolean) => void }) {
                 <UserButton.Link
                   label="Favoris"
                   labelIcon={<BookmarkIcon />}
-                  href="/suggest"
+                  href="/bookmark"
                   // onClick={() => alert("init chat")}
                 />
                 <UserButton.Link

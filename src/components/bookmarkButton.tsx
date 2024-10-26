@@ -3,6 +3,7 @@ import { Button } from "./ui/button";
 import { useState, useEffect } from "react";
 import { Bookmark } from "lucide-react";
 import { useUser } from "@clerk/nextjs";
+import { useToast } from "@/hooks/use-toast";
 
 interface UserMetadata {
   bookmarks?: number[]; // Définir `bookmarks` comme un tableau de nombres
@@ -11,6 +12,7 @@ function BookmarkButton({ toolId }: { toolId: number }) {
   // const [bookmark, setbookmark] = useState(bookmarks);
   const [isbookmarked, setIsbookmarked] = useState(false);
   const { user } = useUser();
+  const { toast } = useToast();
 
   useEffect(() => {
     const bookmarkedTools =
@@ -36,6 +38,10 @@ function BookmarkButton({ toolId }: { toolId: number }) {
           ),
         },
       });
+      toast({
+        title: "Ressource supprimée",
+        description: "Ressource supprimée de vos favoris avec succès",
+      });
     } else {
       // setbookmark(bookmark + 1);
       setIsbookmarked(true);
@@ -47,6 +53,10 @@ function BookmarkButton({ toolId }: { toolId: number }) {
             toolId,
           ],
         },
+      });
+      toast({
+        title: "Ressource ajouteée",
+        description: "Ressource ajouteée à vos favoris avec succès",
       });
     }
   }
