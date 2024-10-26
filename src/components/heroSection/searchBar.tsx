@@ -10,13 +10,11 @@ import { Card } from "../ui/card";
 import Link from "next/link";
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
 
-
 type CategoryType = {
   id: number;
   name: string;
   icon: string;
 };
-
 
 export default function SearchBar() {
   const [query, setQuery] = useState<string>("");
@@ -30,13 +28,13 @@ export default function SearchBar() {
   useEffect(() => {
     const delayDebounceFn = setTimeout(async () => {
       if (watchedQuery) {
-        setLoading(true)
+        setLoading(true);
         setQuery(watchedQuery);
         console.log("Input changed:", watchedQuery);
         const categories = await searchCategories(watchedQuery);
         setResults(categories);
         console.log(categories);
-        setLoading(false)
+        setLoading(false);
       } else {
         setResults([]); // Clear results if the query is empty
       }
@@ -46,9 +44,9 @@ export default function SearchBar() {
   }, [watchedQuery]); // Déclenche à chaque fois que `watchedQuery` change
 
   return (
-    <div className="md:w-1/2">
+    <div className="md:w-1/2 w-full">
       <Input
-        className=" h-12"
+        className="h-12"
         placeholder="Rechercher par category"
         // onChange={(e) => setQuery(e.target.value)}
         {...register("query")}
@@ -68,7 +66,11 @@ export default function SearchBar() {
               <ArrowRightIcon className="text-violet-500 w-6 h-6" />
             </Link>
           ))}
-          {!loading && query !== "" ? <p>Aucun resultat ne correspondant</p> : <></>}
+          {!loading && query !== "" && results.length === 0 ? (
+            <p>Aucun resultat ne correspondant</p>
+          ) : (
+            <></>
+          )}
           {loading ? <p>Loading...</p> : <></>}
         </Card>
       ) : (
