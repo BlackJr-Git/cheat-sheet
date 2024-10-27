@@ -9,32 +9,39 @@ import { useToast } from "@/hooks/use-toast";
 interface UserMetadata {
   bookmarks?: number[]; // Définir `bookmarks` comme un tableau de nombres
 }
-const skeletons: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+
+const skeletons: number[] = Array.from({ length: 12 }, (_, i) => i + 1);
 
 export default function BookmarkPage() {
-  const [bookmarks, setBookmarks] = useState([] as any);
-  const [loading, setLoading] = useState(false);
+  const [bookmarks, setBookmarks] = useState<any[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
   const { user } = useUser();
   const { toast } = useToast();
   const loader = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const bookmarkedTools =
-      (user?.unsafeMetadata as UserMetadata)?.bookmarks || [];
-    async function getBookmarks(): Promise<any> {
+    const bookmarkedTools = (user?.unsafeMetadata as UserMetadata)?.bookmarks || [];
+
+    async function getBookmarks() {
       try {
         setLoading(true);
-        const bookmarks = await getBookmarksAction(bookmarkedTools);
-        setBookmarks(bookmarks);
-        setLoading(false);
+        const fetchedBookmarks = await getBookmarksAction(bookmarkedTools);
+        setBookmarks(fetchedBookmarks as any);
       } catch (error) {
-        console.log(error);
+        console.error(error);
+        toast({
+          title: "Erreur de chargement",
+          description: "Impossible de charger vos favoris.",
+        });
       } finally {
         setLoading(false);
       }
     }
-    getBookmarks();
-  });
+
+    if (bookmarkedTools.length) {
+      getBookmarks();
+    }
+  }, [user, toast]);
 
   return (
     <main className="container my-4 min-h-screen">
@@ -43,7 +50,7 @@ export default function BookmarkPage() {
           <h1 className="text-3xl font-semibold">Mes ressources favorites</h1>
           <p className="text-lg">
             <span className="text-white bg-violet-500 p-2">
-              {bookmarks?.length} ressources
+              {bookmarks.length} ressources
             </span>{" "}
             disponibles dans vos favoris.
           </p>
@@ -66,20 +73,13 @@ export default function BookmarkPage() {
       </section>
       <section className="py-12">
         <div className="flex items-center justify-center flex-wrap gap-6">
-          {bookmarks?.map((tool: any) => (
-            <ToolsCard key={tool.id} tool={tool} />
-          ))}
+          {loading
+            ? skeletons.map((_, index) => <SkeletonCard key={index} />)
+            : bookmarks.map((tool: any) => <ToolsCard key={tool.id} tool={tool} />)}
         </div>
 
         {/* Loader pour déclencher le scroll infini */}
-        {/* {loading && (
-          <div className="flex items-center justify-center flex-wrap gap-6 mt-8">
-            {skeletons.map((tool: number) => (
-              <SkeletonCard key={tool} />
-            ))}
-          </div>
-        )} */}
-        {/* <div ref={loader} className="h-5 w-full" /> */}
+        <div ref={loader} className="h-5 w-full" />
       </section>
     </main>
   );

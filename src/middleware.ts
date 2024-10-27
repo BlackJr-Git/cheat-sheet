@@ -5,7 +5,10 @@ import {
 } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 
-const isProtectedRoute = createRouteMatcher(["/dashboard(.*)", "/forum(.*)"]);
+const isProtectedRoute = createRouteMatcher([
+  "/dashboard(.*)",
+  "/bookmark(.*)",
+]);
 
 const isAdminRoute = createRouteMatcher(["/dashboard(.*)"]);
 

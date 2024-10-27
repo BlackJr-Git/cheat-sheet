@@ -72,6 +72,13 @@ function Header() {
             <Link href={"/"}>Blog</Link>
             <span className="absolute left-0 bottom-0 w-full h-[2px] bg-green-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
           </div>
+
+          <SignedIn>
+            <div className="relative group">
+              <Link href={"/bookmark"}>Mes favoris</Link>
+              <span className="absolute left-0 bottom-0 w-full h-[2px] bg-violet-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+            </div>
+          </SignedIn>
         </nav>
 
         <div className="items-center justify-center gap-3 md:flex hidden">
@@ -100,11 +107,11 @@ function Header() {
                   href="/bookmark"
                   // onClick={() => alert("init chat")}
                 />
-                <UserButton.Link
+                {/* <UserButton.Link
                   label="Suggestions"
                   labelIcon={<LightBulbIcon />}
                   href="/suggest"
-                />
+                /> */}
               </UserButton.MenuItems>
             </UserButton>
           </SignedIn>
@@ -215,11 +222,11 @@ function MobileHeader({ setOpen }: { setOpen: (open: boolean) => void }) {
                   href="/bookmark"
                   // onClick={() => alert("init chat")}
                 />
-                <UserButton.Link
+                {/* <UserButton.Link
                   label="Suggestions"
                   labelIcon={<LightBulbIcon />}
                   href="/suggest"
-                />
+                /> */}
               </UserButton.MenuItems>
             </UserButton>
           </SignedIn>

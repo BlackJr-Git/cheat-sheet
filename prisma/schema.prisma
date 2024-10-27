@@ -39,6 +39,7 @@ model Tool {
   userFav       UserTool[]
   userLikes     LikedTool[]
   createdAt     DateTime      @default(now())
+  slug          String        @default("tool")
 }
 
 model ToolImage {

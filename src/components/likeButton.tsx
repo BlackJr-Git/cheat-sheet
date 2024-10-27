@@ -54,14 +54,14 @@ function LikeButton({ likes, id }: { likes: number; id: number }) {
   return (
     <Button
       variant="outline"
-      className="flex gap-2 cursor-pointer hover:bg-red-200 border-2 hover:border-red-500 hover:text-red-500"
+      className={`flex gap-2 ${isliked ? "border-red-500 text-red-500" : ""} cursor-pointer hover:bg-red-200 border-2 hover:border-red-500 hover:text-red-500`}
       onClick={likeTool}
     >
       {" "}
       <HeartIcon
         className={`h-6 w-6  ${isliked ? "text-red-500 fill-red-500" : ""} `}
       />{" "}
-      {like}{" "}
+      {/* {like}{" "} */}
     </Button>
   );
 }
