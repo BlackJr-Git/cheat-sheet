@@ -55,7 +55,7 @@ function ToolDetails({ tool }: { tool: ToolType }) {
               {/* <Button className="text-lg flex gap-2">
                 <Bookmark />
               </Button> */}
-              <BookmarkButton bookmarks={0} />
+              <BookmarkButton toolId={tool.id} />
             </div>
           </div>
         </DialogHeader>

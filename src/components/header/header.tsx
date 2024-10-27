@@ -1,11 +1,23 @@
 "use client";
 import Link from "next/link";
 import { Button } from "../ui/button";
-import { Bars3CenterLeftIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import {
+  Bars3CenterLeftIcon,
+  XMarkIcon,
+  BookmarkIcon,
+  LightBulbIcon,
+} from "@heroicons/react/24/outline";
 import { useState, useEffect } from "react";
 import { useStore, StoreType } from "@/appStore";
 import { userType } from "@/types";
 import { UserPopover } from "@/components";
+import {
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
 
 function Header() {
   const [open, setOpen] = useState(false);
@@ -60,9 +72,52 @@ function Header() {
             <Link href={"/"}>Blog</Link>
             <span className="absolute left-0 bottom-0 w-full h-[2px] bg-green-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
           </div>
+
+          <SignedIn>
+            <div className="relative group">
+              <Link href={"/bookmark"}>Mes favoris</Link>
+              <span className="absolute left-0 bottom-0 w-full h-[2px] bg-violet-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+            </div>
+          </SignedIn>
         </nav>
 
         <div className="items-center justify-center gap-3 md:flex hidden">
+          <SignedOut>
+            <SignInButton>
+              <Button variant={"outline"}>Connexion</Button>
+            </SignInButton>
+
+            <SignUpButton>
+              <Button>S&apos;inscrire</Button>
+            </SignUpButton>
+          </SignedOut>
+
+          <SignedIn>
+            <UserButton
+              appearance={{
+                elements: {
+                  userButtonPopoverCard: "bg-violet-100",
+                },
+              }}
+            >
+              <UserButton.MenuItems>
+                <UserButton.Link
+                  label="Favoris"
+                  labelIcon={<BookmarkIcon />}
+                  href="/bookmark"
+                  // onClick={() => alert("init chat")}
+                />
+                {/* <UserButton.Link
+                  label="Suggestions"
+                  labelIcon={<LightBulbIcon />}
+                  href="/suggest"
+                /> */}
+              </UserButton.MenuItems>
+            </UserButton>
+          </SignedIn>
+        </div>
+
+        {/* <div className="items-center justify-center gap-3 md:flex hidden">
           {currentUser ? (
             <UserPopover user={currentUser} />
           ) : (
@@ -75,7 +130,7 @@ function Header() {
               </Link>
             </>
           )}
-        </div>
+        </div> */}
 
         <Bars3CenterLeftIcon
           className="w-8 h-8 md:hidden"
@@ -141,7 +196,43 @@ function MobileHeader({ setOpen }: { setOpen: (open: boolean) => void }) {
           </div>
         </nav>
 
-        <div className="flex w-full flex-col gap-4 mb-12">
+        <div className="flex items-center w-full flex-col gap-4 mb-12">
+          <SignedOut>
+            <SignInButton>
+              <Button variant={"outline"}>Connexion</Button>
+            </SignInButton>
+
+            <SignUpButton>
+              <Button>S&apos;inscrire</Button>
+            </SignUpButton>
+          </SignedOut>
+
+          <SignedIn>
+            <UserButton
+              appearance={{
+                elements: {
+                  userButtonPopoverCard: "bg-violet-100",
+                },
+              }}
+            >
+              <UserButton.MenuItems>
+                <UserButton.Link
+                  label="Favoris"
+                  labelIcon={<BookmarkIcon />}
+                  href="/bookmark"
+                  // onClick={() => alert("init chat")}
+                />
+                {/* <UserButton.Link
+                  label="Suggestions"
+                  labelIcon={<LightBulbIcon />}
+                  href="/suggest"
+                /> */}
+              </UserButton.MenuItems>
+            </UserButton>
+          </SignedIn>
+        </div>
+
+        {/* <div className="flex w-full flex-col gap-4 mb-12">
           {currentUser ? (
             <UserPopover user={currentUser} />
           ) : (
@@ -156,7 +247,7 @@ function MobileHeader({ setOpen }: { setOpen: (open: boolean) => void }) {
               </Link>
             </>
           )}
-        </div>
+        </div> */}
       </header>
     </div>
   );

@@ -32,7 +32,7 @@ function ToolsCard({ tool }: { tool: ToolType }) {
       </CardContent>
       <CardFooter className="flex justify-between">
         <ToolDetails tool={tool} />
-        <LikeButton likes={tool.userLikes?.length || 0} />
+        <LikeButton likes={tool.userLikes?.length || 0} id={tool.id} />
       </CardFooter>
     </Card>
   );

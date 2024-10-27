@@ -80,8 +80,8 @@ export default function UpdateToolsDialog({ tool }: { tool: any }) {
 
   return (
     <Dialog>
-      <DialogTrigger className="rounded-full flex justify-center items-center gap-4 text-white p-2 hover:bg-violet-400 cursor-pointer bg-violet-500 w-full">
-        Modifier <PencilSquareIcon className="w-6 h-6" />
+      <DialogTrigger className="rounded-full text-sm flex justify-center items-center gap-4 text-white px-4 py-2 hover:bg-violet-400 cursor-pointer bg-violet-500">
+        <PencilSquareIcon className="w-6 h-6" />
       </DialogTrigger>
       <DialogContent className="max-h-[90vh] overflow-y-scroll scrollbar-hide">
         <DialogHeader>

@@ -1,20 +1,63 @@
 "use client";
 import { Button } from "./ui/button";
-// import { HeartIcon } from "@heroicons/react/24/outline";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Bookmark } from "lucide-react";
+import { useUser } from "@clerk/nextjs";
+import { useToast } from "@/hooks/use-toast";
 
-function BookmarkButton({ bookmarks }: { bookmarks: number }) {
-  const [bookmark, setbookmark] = useState(bookmarks);
+interface UserMetadata {
+  bookmarks?: number[]; // Définir `bookmarks` comme un tableau de nombres
+}
+function BookmarkButton({ toolId }: { toolId: number }) {
+  // const [bookmark, setbookmark] = useState(bookmarks);
   const [isbookmarked, setIsbookmarked] = useState(false);
+  const { user } = useUser();
+  const { toast } = useToast();
+
+  useEffect(() => {
+    const bookmarkedTools =
+      (user?.unsafeMetadata as UserMetadata)?.bookmarks || [];
+
+    if (user) {
+      if (bookmarkedTools?.includes(toolId)) {
+        setIsbookmarked(true);
+      } else {
+        setIsbookmarked(false);
+      }
+    }
+  }, [user, toolId]);
 
   function bookmarkTool() {
     if (isbookmarked) {
       // setbookmark(bookmark - 1);
       setIsbookmarked(false);
+      user?.update({
+        unsafeMetadata: {
+          bookmarks: (user.unsafeMetadata?.bookmarks as number[]).filter(
+            (toolId) => toolId !== toolId
+          ),
+        },
+      });
+      toast({
+        title: "Ressource supprimée",
+        description: "Ressource supprimée de vos favoris avec succès",
+      });
     } else {
       // setbookmark(bookmark + 1);
       setIsbookmarked(true);
+      user?.update({
+        unsafeMetadata: {
+          ...user.unsafeMetadata,
+          bookmarks: [
+            ...((user.unsafeMetadata?.bookmarks as number[]) || []),
+            toolId,
+          ],
+        },
+      });
+      toast({
+        title: "Ressource ajouteée",
+        description: "Ressource ajouteée à vos favoris avec succès",
+      });
     }
   }
 

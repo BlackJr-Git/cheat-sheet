@@ -4,6 +4,7 @@ import { Button } from "../ui/button";
 import { Eye, Share } from "lucide-react";
 
 const tool = {
+  id: 98,
   title: "V0.dev",
   image:
     "https://res.cloudinary.com/devhqdrwl/image/upload/v1727770249/cheat-sheet/Screenshot_2024-10-01_085640_ibnhgg.png",
@@ -46,11 +47,11 @@ export default function Highlight() {
               </a>
             </Button>
             <div className="flex gap-2">
-              <LikeButton likes={tool.userLikes?.length || 0} />
+              <LikeButton likes={tool.userLikes?.length || 0} id={tool.id} />
               <Button className="text-lg flex gap-2 bg-transparent hover:bg-green-200 border-green-300 text-green-500">
                 <Share />
               </Button>
-              <BookmarkButton bookmarks={0} />
+              <BookmarkButton toolId={tool.id} />
             </div>
           </div>
         </div>

@@ -121,7 +121,7 @@ function Page({ params }: { params: { categoryId: string } }) {
           </h1>
           <p className="text-lg">
             <span className="text-white bg-violet-500 p-2">
-              {data?.pagination?.total || 0} outils
+              {data?.pagination?.total} ressources
             </span>{" "}
             disponibles dans la catégorie {category?.name}. Trouvez ce dont vous
             avez besoin.

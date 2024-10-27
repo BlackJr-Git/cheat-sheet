@@ -42,7 +42,7 @@ export const metadata = {
 export default function Home() {
   return (
     <div>
-      <main className="py-12">
+      <main className="py-8 min-h-screen">
         <HeroSection />
         <Categories />
         <HighlightSection />
