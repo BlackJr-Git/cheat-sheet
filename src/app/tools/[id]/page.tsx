@@ -23,6 +23,22 @@ interface Category {
   icon: string;
 }
 
+/**
+ * SingleToolPage is a React component that displays detailed information about a specific tool.
+ * 
+ * It fetches tool data from an API using the provided tool ID, and displays the tool's image, title,
+ * description, and categories. Additionally, it provides buttons for visiting the tool's website,
+ * bookmarking the tool, liking the tool, and sharing the tool.
+ * 
+ * Props:
+ * - params: An object containing the tool ID which is used to fetch the tool data.
+ * 
+ * State:
+ * - tool: An object containing the tool's details, or null if the data has not been loaded yet.
+ * 
+ * Side-effects:
+ * - Uses the `useEffect` hook to fetch tool data when the component mounts or when the ID changes.
+ */
 export default function SingleToolPage({ params }: { params: { id: string } }) {
   const [tool, setTool] = useState<Tool | null>(null);
   const { id } = params;
