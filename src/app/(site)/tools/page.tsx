@@ -135,7 +135,7 @@ function ToolsPage({ params }: { params: { categoryId: string } }) {
       </section>
 
       <section className="py-12">
-        <div className="flex items-center justify-center flex-wrap gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           {tools.map((tool: any) => (
             <ToolsCard key={tool.id} tool={tool} />
           ))}

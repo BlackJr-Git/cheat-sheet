@@ -8,7 +8,9 @@ import { SkeletonCard } from "@/components";
 import { Skeleton } from "@/components/ui/skeleton";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
-const skeletons: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+const skeletons: number[] = [
+  1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
+];
 
 export default function DashboardToolsPage() {
   const [tools, setTools] = useState([] as ToolType[]);
@@ -61,7 +63,8 @@ export default function DashboardToolsPage() {
     if (container) {
       // Vérifier si l'utilisateur a atteint le bas du conteneur
       if (
-        container.scrollTop + container.clientHeight >= container.scrollHeight && // Position du bas atteinte
+        container.scrollTop + container.clientHeight >=
+          container.scrollHeight && // Position du bas atteinte
         hasMore && // Il y a encore des données à charger
         !loading // Aucun chargement en cours
       ) {
@@ -103,18 +106,17 @@ export default function DashboardToolsPage() {
           <DashboardToolsCard key={tool.id} tool={tool} />
         ))}
         {loading && (
-        <div className="flex items-center justify-center flex-wrap gap-6 mt-8">
-          {skeletons.map((skeleton: number) => (
-            <SkeletonDashboardCard key={skeleton} />
-          ))}
-        </div>
-      )}
+          <div className="flex items-center justify-center flex-wrap gap-6 mt-8">
+            {skeletons.map((skeleton: number) => (
+              <SkeletonDashboardCard key={skeleton} />
+            ))}
+          </div>
+        )}
       </div>
       {!hasMore && <div className="text-center w-full mt-4">No more data</div>}
     </div>
   );
 }
-
 
 function SkeletonDashboardCard() {
   return (
