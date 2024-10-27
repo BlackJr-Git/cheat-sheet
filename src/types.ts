@@ -7,6 +7,7 @@ export type ToolType = {
   published: boolean;
   userLikes : number[];
   categories: string[];
+  slug: string;
 };
 
 export type getToolsType = {

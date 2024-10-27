@@ -5,6 +5,7 @@ import axios from "axios";
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { useRouter } from "next/navigation";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
@@ -12,6 +13,7 @@ const skeletons: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
 function Page({ params }: { params: { categoryId: string } }) {
   const { categoryId } = params;
+  const router = useRouter();
   const { toast } = useToast();
   const [category, setCategory] = useState({} as CategoryType);
   const [tools, setTools] = useState<any[]>([]); // Liste des outils
@@ -61,6 +63,7 @@ function Page({ params }: { params: { categoryId: string } }) {
         description: "Impossible de charger les données",
         variant: "destructive",
       });
+      router.push("/categories");
     } finally {
       setLoading(false);
     }

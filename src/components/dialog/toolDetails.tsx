@@ -53,7 +53,10 @@ function ToolDetails({ tool }: { tool: ToolType }) {
               {/* <Button className="text-lg flex gap-2 bg-transparent hover:bg-green-200 border-green-300 text-green-500">
                 <Share />
               </Button> */}
-              <SharePopover title={tool.title} url={tool.url} />
+              <SharePopover
+                title={tool.title}
+                url={`${process.env.NEXT_PUBLIC_API_URL}/tools/${tool.slug}`}
+              />
               {/* <Button className="text-lg flex gap-2">
                 <Bookmark />
               </Button> */}
