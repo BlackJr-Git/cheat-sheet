@@ -41,7 +41,7 @@ export default function CategoryCombobox({
     async function getCategories() {
       try {
         const { data } = await axios.get(
-          `${apiUrl}/api/category?number=24&pages=1`
+          `${apiUrl}/api/category?number=100&pages=1`
         );
         setCategories(data.categories);
       } catch (error) {

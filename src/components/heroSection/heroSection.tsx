@@ -51,7 +51,7 @@ function HeroSection() {
           className="absolute 8 md:bottom-96 md:left-24 z-20 backdrop-blur border-2 border-green-500 drop-shadow-md animate-pulse hidden md:block"
         />{" "}
         <ToolBubble
-          icon={"/bubble_logo/Figma-01.svg"}
+          icon={"/bubble_logo/perplexity.svg"}
           className="absolute  md:bottom-48 md:right-72 z-20 backdrop-blur border-2 border-green-500 drop-shadow-md animate-pulse hidden md:block"
         />{" "}
         <ToolBubble

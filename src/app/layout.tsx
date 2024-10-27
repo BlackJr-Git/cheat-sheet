@@ -5,9 +5,7 @@ import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import { Header, Footer, ScrollToTopButton } from "@/components";
 import { Toaster } from "@/components/ui/toaster";
-import {
-  ClerkProvider,
-} from "@clerk/nextjs";
+import { ClerkProvider } from "@clerk/nextjs";
 import { frFR } from "@clerk/localizations";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -30,9 +28,7 @@ export default function RootLayout({
     <ClerkProvider localization={frFR}>
       <html lang="fr">
         <body className={montserrat.className}>
-          <Header />
           {children}
-          <Footer />
           <Analytics />
           <ScrollToTopButton />
           <Toaster />

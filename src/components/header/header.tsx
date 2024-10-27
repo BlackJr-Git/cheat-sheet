@@ -194,6 +194,13 @@ function MobileHeader({ setOpen }: { setOpen: (open: boolean) => void }) {
             </Link>
             <span className="absolute left-0 bottom-0 w-full h-[2px] bg-green-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
           </div>
+
+          <SignedIn>
+            <div className="relative group">
+              <Link href={"/bookmark"}>Mes favoris</Link>
+              <span className="absolute left-0 bottom-0 w-full h-[2px] bg-violet-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+            </div>
+          </SignedIn>
         </nav>
 
         <div className="flex items-center w-full flex-col gap-4 mb-12">

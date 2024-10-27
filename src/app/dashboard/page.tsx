@@ -102,7 +102,7 @@ export default function Page() {
   }, []);
 
   return (
-    <div className="w-full bg-slate-100 h-[70vh] rounded-2xl p-4 flex gap-4">
+    <div className="w-full bg-slate-100 h-[90vh] rounded-2xl p-4 flex gap-4">
       <div className="w-3/4">
         <div className="flex gap-4">
           <div className="w-1/3 bg-violet-500 rounded-xl p-4 text-white">

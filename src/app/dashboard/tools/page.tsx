@@ -8,7 +8,7 @@ import { SkeletonCard } from "@/components";
 import { Skeleton } from "@/components/ui/skeleton";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
-const skeletons: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+const skeletons: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 
 export default function DashboardToolsPage() {
   const [tools, setTools] = useState([] as ToolType[]);
@@ -23,7 +23,7 @@ export default function DashboardToolsPage() {
     try {
       setLoading(true);
       const { data } = await axios.get(
-        `${API_URL}/api/tools/?pages=${pageNum}&number=12&orderby=desc`
+        `${API_URL}/api/tools/?pages=${pageNum}&number=16&orderby=desc`
       );
 
       // Ajouter les nouveaux outils à la liste existante sans les remplacer,
@@ -96,7 +96,7 @@ export default function DashboardToolsPage() {
   return (
     <div
       ref={scrollContainerRef}
-      className="w-full bg-slate-100 grow rounded-2xl p-4 max-h-[88%] flex flex-col gap-4 overflow-y-auto" // Conteneur avec scroll interne
+      className="w-full bg-slate-100 grow rounded-2xl p-4 flex flex-col gap-4 overflow-y-auto scrollbar-hide" // Conteneur avec scroll interne
     >
       <div className="flex items-center flex-wrap gap-4 w-full justify-center">
         {tools?.map((tool) => (
@@ -110,7 +110,7 @@ export default function DashboardToolsPage() {
         </div>
       )}
       </div>
-      {/* {!hasMore && <div className="text-center w-full mt-4">No more data</div>} */}
+      {!hasMore && <div className="text-center w-full mt-4">No more data</div>}
     </div>
   );
 }
@@ -119,14 +119,14 @@ export default function DashboardToolsPage() {
 function SkeletonDashboardCard() {
   return (
     <div className="w-[48%] flex gap-2 items-center justify-center">
-      <Skeleton className="h-24 w-72 rounded-xl bg-slate-300" />
-      <div className="flex flex-col gap-2">
+      <Skeleton className="h-24 w-96 rounded-xl bg-slate-300" />
+      {/* <div className="flex flex-col gap-2">
         <Skeleton className="h-8 w-64 bg-slate-300" />
         <Skeleton className="h-8 w-56 bg-slate-300" />
       </div>
       <div>
       <Skeleton className="h-12 w-12 rounded-full bg-slate-300" />
-      </div>
+      </div> */}
     </div>
   );
 }

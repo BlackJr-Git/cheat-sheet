@@ -26,7 +26,7 @@ async function BestTools() {
           Voir Plus<ArrowLeftLotie />
         </Link>
       </div>
-      <div className="flex items-center flex-wrap gap-6 justify-center ">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         {tools.map((tool) => (
           <ToolsCard key={`${tool.id}__best_tools`} tool={tool} />
         ))}

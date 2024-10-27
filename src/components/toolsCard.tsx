@@ -12,9 +12,9 @@ import { LikeButton, ToolDetails } from ".";
 
 function ToolsCard({ tool }: { tool: ToolType }) {
   return (
-    <Card className="max-w-72">
+    <Card className="flex flex-col justify-between">
       <CardHeader>
-        <CardDescription>
+        <CardDescription className="flex items-center justify-center">
           <Image
             priority
             className="rounded-lg"

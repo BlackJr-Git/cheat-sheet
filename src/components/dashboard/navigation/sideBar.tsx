@@ -27,16 +27,11 @@ export default function SideBar() {
   if (!isLoaded || !isSignedIn || !user) {
     return <p>Chargement...</p>;
   }
-  
+
   return (
-    <header className="flex flex-col items-center justify-between gap-8 w-1/5 bg-violet-500 rounded-2xl p-4 h-[70vh]">
-      <div>
-        <SignedIn>
-          <div className="flex items-center justify-center gap-2 text-white">
-            <UserButton />
-            {user.fullName || user.username || "Admin"}
-          </div>
-        </SignedIn>
+    <header className="flex flex-col items-center gap-8 w-1/5 bg-violet-500 rounded-2xl px-4 py-8 h-[90vh]">
+      <div className="text-center font-bold">
+        <h1 className="text-xl text-white">The cheat sheet</h1>
       </div>
 
       <div className="w-full">
@@ -45,7 +40,7 @@ export default function SideBar() {
             <li
               className={` ${
                 currentPage === "/dashboard"
-                  ? "bg-white text-violet-500 font-bold"
+                  ? "bg-white text-violet-500 font-bold fill-violet-500"
                   : "text-white hover:bg-white/10"
               } px-4 py-2 rounded-md w-full`}
             >
@@ -98,10 +93,14 @@ export default function SideBar() {
           </ul>
         </nav>
       </div>
-      <div className="w-full">
-        <Button className="w-full flex items-center justify-center gap-2">
-          Deconnexion <ArrowRightStartOnRectangleIcon className="size-8" />{" "}
-        </Button>
+      
+      <div className="w-full justify-end">
+        <SignedIn>
+          <div className="flex items-center justify-center gap-2 text-white">
+            <UserButton />
+            {user.fullName || user.username || "Admin"}
+          </div>
+        </SignedIn>
       </div>
     </header>
   );
