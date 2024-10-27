@@ -79,6 +79,7 @@ model Category {
   name          String
   icon          String
   tools         ToolCategory[]
+  slug          String        @default("category")
 }
 
 model ToolCategory {

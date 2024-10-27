@@ -6,6 +6,7 @@ import { Eye, Share } from "lucide-react";
 import Image from "next/image";
 import { getToolCategories } from "@/actions/categoriesActions";
 import { useEffect, useState } from "react";
+import SharePopover from "@/components/dialog/sharePopover";
 
 interface Tool {
   id: number;
@@ -125,9 +126,10 @@ export default function SingleToolPage({ params }: { params: { id: string } }) {
             </Button>
             <BookmarkButton toolId={tool.id} />
             <LikeButton likes={0} id={tool.id} />
-            <Button className="text-lg flex gap-2 bg-transparent hover:bg-green-200 border-green-300 text-green-500">
+            {/* <Button className="text-lg flex gap-2 bg-transparent hover:bg-green-200 border-green-300 text-green-500">
               <Share />
-            </Button>
+            </Button> */}
+            <SharePopover title={tool.title} url={tool.url} />
           </div>
         </div>
       </section>

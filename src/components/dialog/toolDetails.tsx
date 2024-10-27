@@ -11,6 +11,7 @@ import Image from "next/image";
 import { Button } from "../ui/button";
 import { Share, Eye } from "lucide-react";
 import { BookmarkButton } from "../";
+import SharePopover from "./sharePopover";
 
 function ToolDetails({ tool }: { tool: ToolType }) {
   return (
@@ -49,9 +50,10 @@ function ToolDetails({ tool }: { tool: ToolType }) {
                   Visiter le site <Eye />
                 </a>
               </Button>
-              <Button className="text-lg flex gap-2 bg-transparent hover:bg-green-200 border-green-300 text-green-500">
+              {/* <Button className="text-lg flex gap-2 bg-transparent hover:bg-green-200 border-green-300 text-green-500">
                 <Share />
-              </Button>
+              </Button> */}
+              <SharePopover title={tool.title} url={tool.url} />
               {/* <Button className="text-lg flex gap-2">
                 <Bookmark />
               </Button> */}

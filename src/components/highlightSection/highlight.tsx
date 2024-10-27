@@ -2,6 +2,7 @@ import Image from "next/image";
 import { BookmarkButton, LikeButton } from "..";
 import { Button } from "../ui/button";
 import { Eye, Share } from "lucide-react";
+import SharePopover from "../dialog/sharePopover";
 
 const tool = {
   id: 98,
@@ -48,9 +49,10 @@ export default function Highlight() {
             </Button>
             <div className="flex gap-2">
               <LikeButton likes={tool.userLikes?.length || 0} id={tool.id} />
-              <Button className="text-lg flex gap-2 bg-transparent hover:bg-green-200 border-green-300 text-green-500">
+              {/* <Button className="text-lg flex gap-2 bg-transparent hover:bg-green-200 border-green-300 text-green-500">
                 <Share />
-              </Button>
+              </Button> */}
+              <SharePopover title={tool.title} url={tool.url} />
               <BookmarkButton toolId={tool.id} />
             </div>
           </div>
