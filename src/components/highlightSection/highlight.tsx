@@ -39,11 +39,11 @@ export default function Highlight() {
           <p className="text-lg mb-4">{tool.description}</p>
 
           <div className="flex md:flex-row flex-col gap-4 justify-end">
-            <Button className="text-lg">
+            <Button className="">
               <a
                 href={tool.url}
                 target="_blank"
-                className="w-full text-lg grow flex gap-4 items-center justify-center"
+                className="w-full grow flex gap-4 items-center justify-center"
               >
                 Visiter le site <Eye />
               </a>

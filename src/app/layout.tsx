@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   title: "Cheat Sheet",
   description: "Trouver tout les sites ou outils dont vous avez besoin",
   icons: {
-    icon: "/favicon.svg",
+    icon: "/favicon.png",
   }
 };
 

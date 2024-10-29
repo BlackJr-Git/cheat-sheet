@@ -18,6 +18,7 @@ import {
   SignedOut,
   UserButton,
 } from "@clerk/nextjs";
+import Image from "next/image";
 
 function Header() {
   const [open, setOpen] = useState(false);
@@ -53,10 +54,10 @@ function Header() {
   return (
     <div className="py-4">
       <header className="flex items-center justify-between px-6 py-3 container border-2 rounded-3xl fixed top-3 left-0 right-0 z-40 backdrop-blur">
-        <div>
-          {/* <Image src="/logo.png" alt="logo" width={100} height={100} /> */}
-          <p className="text-2xl font-extrabold">LOGO</p>
-        </div>
+        <Link href={"/"}>
+          <Image src="/logo.png" alt="logo" width={150} height={150} />
+          {/* <p className="text-2xl font-extrabold">LOGO</p> */}
+        </Link>
         <nav className=" hidden items-center justify-center gap-8 text-lg font-semibold md:flex">
           <div className="relative group">
             <Link href={"/"}>Acceuil</Link>
@@ -69,7 +70,7 @@ function Header() {
           </div>
 
           <div className="relative group">
-            <Link href={"/"}>Blog</Link>
+            <Link href={"/blog"}>Blog</Link>
             <span className="absolute left-0 bottom-0 w-full h-[2px] bg-green-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
           </div>
 
@@ -171,8 +172,10 @@ function MobileHeader({ setOpen }: { setOpen: (open: boolean) => void }) {
   return (
     <div className="">
       <header className="flex flex-col w-full items-center justify-between px-6 py-3 container border-2 fixed top-0 left-0 right-0 z-50 backdrop-blur-3xl h-dvh">
-        <div className="flex items-center justify-between w-full  mb-8">
-          <p className="text-2xl font-extrabold">LOGO</p>
+        <div className="flex items-center justify-between w-full mb-8">
+          <Link href={"/"}>
+            <Image src="/logo.png" alt="logo" width={100} height={100} />
+          </Link>
           <XMarkIcon className="w-8 h-8" onClick={() => setOpen(false)} />
         </div>
         <nav className="flex flex-col items-center justify-center gap-8 text-lg font-semibold md:hidden">
@@ -189,7 +192,7 @@ function MobileHeader({ setOpen }: { setOpen: (open: boolean) => void }) {
             <span className="absolute left-0 bottom-0 w-full h-[2px] bg-violet-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
           </div>
           <div className="relative group">
-            <Link href={"/"} onClick={() => setOpen(false)}>
+            <Link href={"/blog"} onClick={() => setOpen(false)}>
               Blog
             </Link>
             <span className="absolute left-0 bottom-0 w-full h-[2px] bg-green-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
@@ -197,7 +200,9 @@ function MobileHeader({ setOpen }: { setOpen: (open: boolean) => void }) {
 
           <SignedIn>
             <div className="relative group">
-              <Link href={"/bookmark"}>Mes favoris</Link>
+              <Link href={"/bookmark"} onClick={() => setOpen(false)}>
+                Mes favoris
+              </Link>
               <span className="absolute left-0 bottom-0 w-full h-[2px] bg-violet-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
             </div>
           </SignedIn>
@@ -238,23 +243,6 @@ function MobileHeader({ setOpen }: { setOpen: (open: boolean) => void }) {
             </UserButton>
           </SignedIn>
         </div>
-
-        {/* <div className="flex w-full flex-col gap-4 mb-12">
-          {currentUser ? (
-            <UserPopover user={currentUser} />
-          ) : (
-            <>
-              <Link href={"/auth/sign-up"} className="w-full inline-block">
-                <Button className="w-full">S&apos;inscrire</Button>{" "}
-              </Link>
-              <Link href={"/auth/sign-in"} className="w-full">
-                <Button variant={"outline"} className="w-full">
-                  Connexion
-                </Button>
-              </Link>
-            </>
-          )}
-        </div> */}
       </header>
     </div>
   );

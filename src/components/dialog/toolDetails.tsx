@@ -41,11 +41,11 @@ function ToolDetails({ tool }: { tool: ToolType }) {
             </div>
 
             <div className="flex gap-2 w-full">
-              <Button className="w-full text-lg grow">
+              <Button className="w-full grow">
                 <a
                   href={tool.url}
                   target="_blank"
-                  className="w-full text-lg grow flex gap-4 items-center justify-center"
+                  className="w-full grow flex gap-4 items-center justify-center"
                 >
                   Visiter le site <Eye />
                 </a>
