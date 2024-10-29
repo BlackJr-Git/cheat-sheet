@@ -52,7 +52,7 @@ export default function SearchBar() {
         {...register("query")}
       />
       {watchedQuery !== "" ? (
-        <Card className="mt-2 flex flex-col gap-2 max-h-64 overflow-y-scroll p-4">
+        <Card className="mt-2 flex flex-col gap-2 max-h-64 overflow-y-scroll p-4 scrollbar-hide ">
           {results.map((category) => (
             <Link
               className="hover:bg-violet-200 px-4 py-2 rounded-3xl flex items-center justify-between"

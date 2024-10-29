@@ -18,11 +18,11 @@ export const metadata = {
     title: "The Cheat Sheet",
     description:
       "Trouver toutes les ressources dont vous avez besoin pour gagner du temps et de la productivité",
-    url: "https://the-cheat-sheet.vercel.app/",
+    url: "https://thecheatsheet.tech/",
     siteName: "The Cheat Sheet",
     images: [
       {
-        url: "https://the-cheat-sheet.vercel.app/homepage-2.png",
+        url: "https://thecheatsheet.tech//homepage-1.png",
         width: 1200,
         height: 630,
         alt: "The Cheat Sheet Homepage",
@@ -34,7 +34,7 @@ export const metadata = {
     title: "The Cheat Sheet",
     description:
       "Trouver toutes les ressources dont vous avez besoin pour gagner du temps et de la productivité",
-    images: ["https://the-cheat-sheet.vercel.app/homepage-1.png"],
+    images: ["https://thecheatsheet.tech/homepage-1.png"],
     site: "@JuniorAsosa",
   },
 };
