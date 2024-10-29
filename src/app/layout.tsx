@@ -3,10 +3,11 @@ import { Montserrat, Poppins } from "next/font/google";
 import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
-import { Header, Footer, ScrollToTopButton } from "@/components";
+import { ScrollToTopButton } from "@/components";
 import { Toaster } from "@/components/ui/toaster";
 import { ClerkProvider } from "@clerk/nextjs";
 import { frFR } from "@clerk/localizations";
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,9 +30,10 @@ export default function RootLayout({
       <html lang="fr">
         <body className={montserrat.className}>
           {children}
-          <Analytics />
           <ScrollToTopButton />
           <Toaster />
+          <SpeedInsights />
+          <Analytics />
         </body>
       </html>
     </ClerkProvider>
