@@ -18,6 +18,9 @@ const montserrat = Montserrat({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Cheat Sheet",
   description: "Trouver tout les sites ou outils dont vous avez besoin",
+  icons: {
+    icon: "/favicon.svg",
+  }
 };
 
 export default function RootLayout({
@@ -32,8 +35,8 @@ export default function RootLayout({
           {children}
           <ScrollToTopButton />
           <Toaster />
-          <SpeedInsights />
           <Analytics />
+          <SpeedInsights />
         </body>
       </html>
     </ClerkProvider>
