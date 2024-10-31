@@ -8,9 +8,6 @@ import {
   LightBulbIcon,
 } from "@heroicons/react/24/outline";
 import { useState, useEffect } from "react";
-import { useStore, StoreType } from "@/appStore";
-import { userType } from "@/types";
-import { UserPopover } from "@/components";
 import {
   SignInButton,
   SignUpButton,
@@ -23,30 +20,6 @@ import Image from "next/image";
 function Header() {
   const [open, setOpen] = useState(false);
 
-  const {
-    currentUser,
-    setCurrentUser,
-  }: {
-    currentUser: userType | null;
-    setCurrentUser: (currentUser: userType) => void;
-  } = useStore() as StoreType;
-
-  // const user = {
-  //   id: 1,
-  //   name: "John Doe",
-  //   email: "lqfZg@example.com",
-  //   image: "https://example.com/avatar.jpg",
-  //   createdAt: new Date(),
-  //   updatedAt: new Date(),
-  // };
-
-  // useEffect(() => {
-  //   if (currentUser) {
-  //     return;
-  //   }
-  //   setCurrentUser(user);
-  // }, [currentUser]);
-
   if (open) {
     return <MobileHeader setOpen={setOpen} />;
   }
@@ -56,7 +29,6 @@ function Header() {
       <header className="flex items-center justify-between px-6 py-3 container border-2 rounded-3xl fixed top-3 left-0 right-0 z-40 backdrop-blur">
         <Link href={"/"}>
           <Image src="/logo.png" alt="logo" width={150} height={150} />
-          {/* <p className="text-2xl font-extrabold">LOGO</p> */}
         </Link>
         <nav className=" hidden items-center justify-center gap-8 text-lg font-semibold md:flex">
           <div className="relative group">
@@ -108,30 +80,10 @@ function Header() {
                   href="/bookmark"
                   // onClick={() => alert("init chat")}
                 />
-                {/* <UserButton.Link
-                  label="Suggestions"
-                  labelIcon={<LightBulbIcon />}
-                  href="/suggest"
-                /> */}
               </UserButton.MenuItems>
             </UserButton>
           </SignedIn>
         </div>
-
-        {/* <div className="items-center justify-center gap-3 md:flex hidden">
-          {currentUser ? (
-            <UserPopover user={currentUser} />
-          ) : (
-            <>
-              <Link href={"/auth/sign-in"}>
-                <Button variant={"outline"}>Connexion</Button>
-              </Link>
-              <Link href={"/auth/sign-up"}>
-                <Button>S&apos;inscrire</Button>{" "}
-              </Link>
-            </>
-          )}
-        </div> */}
 
         <Bars3CenterLeftIcon
           className="w-8 h-8 md:hidden"
@@ -145,36 +97,13 @@ function Header() {
 export default Header;
 
 function MobileHeader({ setOpen }: { setOpen: (open: boolean) => void }) {
-  const {
-    currentUser,
-    setCurrentUser,
-  }: {
-    currentUser: userType | null;
-    setCurrentUser: (currentUser: userType) => void;
-  } = useStore() as StoreType;
-
-  // const user = {
-  //   id: 1,
-  //   name: "John Doe",
-  //   email: "lqfZg@example.com",
-  //   image: "https://example.com/avatar.jpg",
-  //   createdAt: new Date(),
-  //   updatedAt: new Date(),
-  // };
-
-  useEffect(() => {
-    if (currentUser) {
-      return;
-    }
-    // setCurrentUser(user);
-  }, [currentUser]);
 
   return (
     <div className="">
       <header className="flex flex-col w-full items-center justify-between px-6 py-3 container border-2 fixed top-0 left-0 right-0 z-50 backdrop-blur-3xl h-dvh">
         <div className="flex items-center justify-between w-full mb-8">
           <Link href={"/"}>
-            <Image src="/logo.png" alt="logo" width={100} height={100} />
+            <Image src="/logo.png" alt="logo" width={150} height={150} />
           </Link>
           <XMarkIcon className="w-8 h-8" onClick={() => setOpen(false)} />
         </div>
@@ -234,11 +163,6 @@ function MobileHeader({ setOpen }: { setOpen: (open: boolean) => void }) {
                   href="/bookmark"
                   // onClick={() => alert("init chat")}
                 />
-                {/* <UserButton.Link
-                  label="Suggestions"
-                  labelIcon={<LightBulbIcon />}
-                  href="/suggest"
-                /> */}
               </UserButton.MenuItems>
             </UserButton>
           </SignedIn>

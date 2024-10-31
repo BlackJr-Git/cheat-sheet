@@ -73,7 +73,7 @@ function HeroSection() {
         {/* <MottionBubble /> for mobile device */}
         <ToolBubble
           icon={"/bubble_logo/Figma-01.svg"}
-          className="absolute top-36 left-40 z-20 backdrop-blur border-2 border-green-500 drop-shadow-md animate-pulse md:hidden"
+          className="absolute bottom-8 left-40 z-20 backdrop-blur border-2 border-green-500 drop-shadow-md animate-pulse md:hidden"
         />{" "}
         <ToolBubble
           icon={"/bubble_logo/perplexity.svg"}
@@ -81,7 +81,7 @@ function HeroSection() {
         />{" "}
         <ToolBubble
           icon={"/bubble_logo/sp.png"}
-          className="absolute top-32 left-72 z-20 backdrop-blur border-2 border-violet-500 drop-shadow-md animate-pulse md:hidden"
+          className="absolute bottom-24 left-72 z-20 backdrop-blur border-2 border-violet-500 drop-shadow-md animate-pulse md:hidden"
         />{" "}
         <ToolBubble
           icon={"/bubble_logo/chat-gpt.png"}
@@ -89,11 +89,11 @@ function HeroSection() {
         />{" "}
         <ToolBubble
           icon={"/bubble_logo/flowbite.svg"}
-          className="absolute top-2 right-6 z-20 backdrop-blur border-2 border-green-500 drop-shadow-md animate-pulse md:hidden"
+          className="absolute top-2 right-12 z-20 backdrop-blur border-2 border-green-500 drop-shadow-md animate-pulse md:hidden"
         />{" "}
         <ToolBubble
           icon={"/bubble_logo/notion.svg"}
-          className="absolute top-32 left-4 z-20 backdrop-blur border-2 border-violet-500 drop-shadow-md animate-pulse md:hidden"
+          className="absolute bottom-12 left-4 z-20 backdrop-blur border-2 border-violet-500 drop-shadow-md animate-pulse md:hidden"
         />{" "}
       </div>
     </section>

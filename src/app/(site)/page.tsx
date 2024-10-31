@@ -6,7 +6,6 @@ import {
   HighlightSection,
   NewsletterSection,
 } from "@/components";
-import Head from "next/head";
 
 export const metadata = {
   title:
