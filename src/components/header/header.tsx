@@ -99,7 +99,7 @@ export default Header;
 function MobileHeader({ setOpen }: { setOpen: (open: boolean) => void }) {
 
   return (
-    <div className="">
+    <div className="py-4">
       <header className="flex flex-col w-full items-center justify-between px-6 py-3 container border-2 fixed top-0 left-0 right-0 z-50 backdrop-blur-3xl h-dvh">
         <div className="flex items-center justify-between w-full mb-8">
           <Link href={"/"}>
