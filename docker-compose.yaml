@@ -3,7 +3,7 @@ services:
     container_name: junior_cheat_sheet
     image: node:18
     ports:
-      - "8098:3000"
+      - "3999:3000"
     working_dir: /app
     volumes:
       - ./:/app/

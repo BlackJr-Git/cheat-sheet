@@ -2,16 +2,22 @@ import Image from "next/image";
 import { ToolBubble } from "@/components";
 import { ChangingWords } from "../animation";
 import SearchBar from "./searchBar";
+import { Oxanium } from "next/font/google";
+
+const oxanium = Oxanium({
+  subsets: ['latin'], // Spécifiez les sous-ensembles nécessaires
+  display: 'swap', // Utilisez l'option display pour améliorer le rendu
+});
 
 function HeroSection() {
   return (
     <section className="flex flex-col gap-12 items-center justify-center relative h-[100vh] bg-[url('/gradient.svg')] bg-center bg-cover">
       <div className="relative container h-[80%] flex flex-col items-center justify-center gap-12">
-        <h1 className="text-4xl font-bold text-center flex flex-col gap-4 w-full">
-          <span className="">
+        <h1 className="text-5xl font-bold text-center flex flex-col gap-4 w-full">
+          <span className={`${oxanium.className}`}>
             Trouvez les meilleurs ressources <ChangingWords />
           </span>
-          <span>
+          <span className={`${oxanium.className}`}>
             pour gagner de la{" "}
             <span className="text-green-600 bg-white p-2 leading-snug">
               productivité

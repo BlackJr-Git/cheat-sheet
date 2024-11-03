@@ -5,9 +5,7 @@ import { Inter } from "next/font/google";
 import { Header, Footer } from "@/components";
 
 const inter = Inter({ subsets: ["latin"] });
-
 const montserrat = Montserrat({ subsets: ["latin"] });
-
 // const poppins = Poppins({ subsets: ["latin"] });
 
 export const metadata: Metadata = {

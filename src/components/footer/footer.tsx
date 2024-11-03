@@ -14,7 +14,7 @@ function Footer() {
         <div className="flex items-center justify-center md:flex-row flex-col gap-3">
           <p>
             Built and maintained by:{" "}
-            <a className="text-blue-500" href="https://junior-asosa.vercel.app">
+            <a className="text-blue-500" href="https://junior-asosa.vercel.app" target={"_blank"}>
               Junior Asosa
             </a>
           </p>
