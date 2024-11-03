@@ -1,3 +1,4 @@
+"use client";
 import {
   Card,
   CardContent,
@@ -10,6 +11,8 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { CalendarDays, ArrowUpRight } from "lucide-react";
+import { getBlogArticles } from "@/actions/articleActions";
+import { useState, useEffect } from "react";
 
 const blogArticle = [
   {
@@ -60,6 +63,17 @@ const blogArticle = [
 ];
 
 export default function BlogPage() {
+  // const entries = await getBlogArticles();
+  // console.log(entries?.includes);
+
+  const [article, setArticle] = useState([] as any[]);
+  useEffect(() => {
+    getBlogArticles().then((entries) => {
+      setArticle(entries?.items || []);
+      console.log(entries?.items);
+    });
+  }, []);
+
   return (
     <main className="flex min-h-screen flex-col mt-12">
       <section className="w-full h-[50vh] container flex rounded-xl bg-green-500">
@@ -68,13 +82,13 @@ export default function BlogPage() {
       </section>
       <section className="container flex flex-col md:flex-row gap-4">
         <aside className="w-1/4 bg-green-300">aside</aside>
-        <article className="md:w-3/4 flex flex-col gap-4">
-          <div className="w-full h-1/3 flex items-center justify-center">
-            <MainArticleCard article={blogArticle[0]} />
+        <article className="md:w-3/4 flex flex-col gap-4 py-4">
+          <div className="w-full flex items-center justify-center">
+            <MainArticleCard article={article[0]} />
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 sm:grid-cols-4 gap-4">
-            {blogArticle.map((article) => (
-              <ArticleCard key={article.id} article={article} />
+            {article.map((article) => (
+              <ArticleCard key={article?.fields?.id} article={article} />
             ))}
           </div>
         </article>
@@ -83,23 +97,14 @@ export default function BlogPage() {
   );
 }
 
-function MainArticleCard({
-  article,
-}: {
-  article: {
-    title: string;
-    description: string;
-    href: string;
-    date: string;
-    datetime: string;
-    category: { name: string; href: string };
-    author: { name: string; imageUrl: string };
-  };
-}) {
+function MainArticleCard({ article }: { article: any }) {
   return (
     <Card
-      className={`bg-[url('https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80')] 
+      className={`
         bg-cover bg-center relative w-full h-80`}
+      style={{
+        backgroundImage: `url(${article?.fields?.featuredImage?.fields?.file?.url})`,
+      }}
     >
       {/* <CardHeader className="mt-24">
         <CardTitle>Card title</CardTitle>
@@ -124,34 +129,34 @@ function MainArticleCard({
       <div className="w-full flex flex-col gap-4 p-4 bg-violet-500/10 absolute bottom-0 rounded-b-lg backdrop-blur-2xl">
         <div>
           <div className="flex items-center justify-between">
-            <CardTitle>{article?.title}</CardTitle>
+            <CardTitle>{article?.fields?.title}</CardTitle>
             <Link href="#" className="text-violet-900 hover:spin-in-45">
               <ArrowUpRight />
             </Link>
           </div>
           <div>
-            <p className="text-black">{article?.description}</p>
+            <p className="text-black">{article?.fields?.excerpt?.content[0]?.content[0]?.value}</p>
           </div>
         </div>
 
         <div>
           <div className="flex items-center gap-4">
             <div className="flex gap-2 items-center">
-              <Image
+              {/* <Image
                 src={article?.author?.imageUrl}
                 alt={`${article?.author?.name} profile picture`}
                 width={40}
                 height={40}
                 className="rounded-full"
-              />
-              <p className="text-black">{article?.author?.name}</p>
+              /> */}
+              {/* <p className="text-black">{article?.author?.name}</p> */}
             </div>
 
             <div className="flex gap-2 items-center">
-              <div className="w-10 h-10 flex items-center justify-center rounded-full bg-transparent border border-white">
-                <CalendarDays color="white" />
+              <div className="w-10 h-10 flex items-center justify-center rounded-full bg-transparent border border-black">
+                <CalendarDays color="black" />
               </div>
-              <p className="text-white">{article?.date}</p>
+              <p className="text-black">{article?.sys?.updatedAt}</p>
             </div>
           </div>
         </div>
@@ -163,40 +168,47 @@ function MainArticleCard({
 function ArticleCard({ article }: { article: any }) {
   return (
     <Card
-      className={`bg-[url('https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80')] 
+      style={{
+        backgroundImage: `url(${article?.fields?.featuredImage?.fields?.file?.url})`,
+      }}
+      className={`
         bg-cover bg-center relative w-full h-96 pt-96`}
     >
       <div className="w-full flex flex-col gap-4 p-4 bg-violet-500/10 absolute bottom-0 rounded-b-lg backdrop-blur-2xl">
         <div>
           <div className="flex items-center justify-between">
-            <CardTitle>{article?.title}</CardTitle>
+            <CardTitle>{article?.fields?.title}</CardTitle>
             <Link href="#" className="text-violet-900 hover:spin-in-45">
               <ArrowUpRight />
             </Link>
           </div>
           <div>
-            <p className="text-black line-clamp-1 md:line-clamp-2">{article?.description}</p>
+            <p className="text-black line-clamp-1 md:line-clamp-2">
+              {article?.fields?.excerpt?.content[0]?.content[0]?.value}
+            </p>
           </div>
         </div>
 
         <div>
           <div className="flex flex-col md:flex-row gap-4">
             <div className="flex gap-2 items-center">
-              <Image
+              {/* <Image
                 src={article?.author?.imageUrl}
                 alt={`${article?.author?.name} profile picture`}
                 width={30}
                 height={30}
                 className="rounded-full"
-              />
+              /> */}
               <p className="text-black line-clamp-1">{article?.author?.name}</p>
             </div>
 
             <div className="flex gap-2 items-center">
-              <div className="w-8 h-8 flex items-center justify-center rounded-full bg-transparent border border-white">
-                <CalendarDays color="white" size={16} />
+              <div className="w-8 h-8 flex items-center justify-center rounded-full bg-transparent border border-black">
+                <CalendarDays color="black" size={16} />
               </div>
-              <p className="text-white line-clamp-1">{article?.date}</p>
+              <p className="line-clamp-1">
+                {article?.sys?.updatedAt}
+              </p>
             </div>
           </div>
         </div>
