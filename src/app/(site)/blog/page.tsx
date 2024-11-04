@@ -130,12 +130,17 @@ function MainArticleCard({ article }: { article: any }) {
         <div>
           <div className="flex items-center justify-between">
             <CardTitle>{article?.fields?.title}</CardTitle>
-            <Link href="#" className="text-violet-900 hover:spin-in-45">
+            <Link
+              href={`/blog/${article?.fields?.slug}`}
+              className="text-violet-900 hover:spin-in-45"
+            >
               <ArrowUpRight />
             </Link>
           </div>
           <div>
-            <p className="text-black">{article?.fields?.excerpt?.content[0]?.content[0]?.value}</p>
+            <p className="text-black">
+              {article?.fields?.excerpt?.content[0]?.content[0]?.value}
+            </p>
           </div>
         </div>
 
@@ -178,7 +183,10 @@ function ArticleCard({ article }: { article: any }) {
         <div>
           <div className="flex items-center justify-between">
             <CardTitle>{article?.fields?.title}</CardTitle>
-            <Link href="#" className="text-violet-900 hover:spin-in-45">
+            <Link
+              href={`/blog/${article?.fields?.slug}`}
+              className="text-violet-900 hover:spin-in-45"
+            >
               <ArrowUpRight />
             </Link>
           </div>
@@ -206,9 +214,7 @@ function ArticleCard({ article }: { article: any }) {
               <div className="w-8 h-8 flex items-center justify-center rounded-full bg-transparent border border-black">
                 <CalendarDays color="black" size={16} />
               </div>
-              <p className="line-clamp-1">
-                {article?.sys?.updatedAt}
-              </p>
+              <p className="line-clamp-1">{article?.sys?.updatedAt}</p>
             </div>
           </div>
         </div>
