@@ -7,6 +7,7 @@ module.exports = {
       "res.cloudinary.com",
       "www.microlink.io",
       "images.unsplash.com",
+      "images.ctfassets.net",
     ],
   },
 };

@@ -100,16 +100,17 @@ export default function SingleToolPage({ params }: { params: { id: string } }) {
           <Image
             src={tool.image}
             alt={tool.title}
-            width={500}
-            height={500}
+            width={1500}
+            height={1500}
             className="w-full h-full object-cover rounded-xl drop-shadow-lg"
           />
         </div>
-        <div className="md:w-1/2 flex flex-col justify-between px-4">
+
+        <div className="md:w-1/2 flex flex-col justify-between px-4 gap-4">
           {/* <div> */}
           <h2 className="text-3xl font-bold mb-8">{tool.title}</h2>
           <p className="text-lg mb-4">{tool.description}</p>
-          <div className="flex flex-wrap gap-4 my-2 px-4">
+          <div className="flex flex-wrap gap-4 my-2">
             {tool.categories?.map((category) => (
               <span
                 key={`${category.id}__category`}
@@ -121,7 +122,7 @@ export default function SingleToolPage({ params }: { params: { id: string } }) {
             ))}
             {/* </div> */}
           </div>
-          <div className="flex gap-4">
+          <div className="flex gap-4 flex-wrap">
             <Button className="text-lg">
               <a
                 href={tool.url}
