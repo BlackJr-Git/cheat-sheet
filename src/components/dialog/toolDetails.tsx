@@ -1,3 +1,4 @@
+"use client";
 import {
   Dialog,
   DialogContent,
@@ -12,8 +13,13 @@ import { Button } from "../ui/button";
 import { Share, Eye } from "lucide-react";
 import { BookmarkButton } from "../";
 import SharePopover from "./sharePopover";
+import { useState } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
 
 function ToolDetails({ tool }: { tool: ToolType }) {
+  const [imageLoading, setImageLoading] = useState(true);
+  const [imageError, setImageError] = useState(false);
+
   return (
     <Dialog>
       <DialogTrigger className="rounded-lg p-2 hover:bg-slate-50 cursor-pointer">
@@ -25,15 +31,50 @@ function ToolDetails({ tool }: { tool: ToolType }) {
             {tool.title}
           </DialogTitle>
           <div className="flex flex-col items-center justify-center gap-6">
-            <div>
-              <Image
-                priority
-                className="rounded-lg"
-                src={tool.image}
-                alt="logo"
-                width={400}
-                height={400}
-              />
+            <div className="relative w-full max-w-[400px] aspect-video">
+              {imageLoading && !imageError && (
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <Skeleton className="absolute inset-0 w-full h-full rounded-lg" />
+                  <div className="z-10">
+                    <Image
+                      src={tool.image}
+                      alt={tool.title + " image"}
+                      width={100}
+                      height={56}
+                      className="opacity-70 object-contain"
+                    />
+                  </div>
+                </div>
+              )}
+              {imageError ? (
+                <div className="w-full h-full flex items-center justify-center bg-gray-100 rounded-lg">
+                  <div className="flex flex-col items-center gap-2">
+                    <Image
+                      src="/logo.png"
+                      alt="App Logo"
+                      width={100}
+                      height={100}
+                      className="object-contain"
+                    />
+                    <p className="text-sm text-gray-500">{tool.title}</p>
+                  </div>
+                </div>
+              ) : (
+                <Image
+                  priority
+                  className="rounded-lg object-contain w-full h-full"
+                  src={tool.image}
+                  alt={tool.title + " image"}
+                  width={400}
+                  height={225}
+                  onLoad={() => setImageLoading(false)}
+                  onError={() => {
+                    setImageLoading(false);
+                    setImageError(true);
+                  }}
+                  style={{ opacity: imageLoading ? 0 : 1, transition: "opacity 0.2s" }}
+                />
+              )}
             </div>
 
             <div>

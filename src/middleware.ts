@@ -8,7 +8,7 @@ import { NextResponse } from "next/server";
 const isProtectedRoute = createRouteMatcher([
   "/dashboard(.*)",
   "/bookmark(.*)",
-  "/api(.*)"
+  // "/api(.*)"
 ]);
 
 const isAdminRoute = createRouteMatcher(["/dashboard(.*)"]);
