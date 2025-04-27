@@ -180,5 +180,5 @@ function MobileHeader({ setOpen }   : { setOpen: React.Dispatch<React.SetStateAc
 const navLinks = [
     { href: "/", label: "Acceuil" },
     { href: "/categories", label: "Categories" },
-    { href: "/blog", label: "Blog" },
+    // { href: "/blog", label: "Blog" },
 ];
