@@ -1,7 +1,28 @@
+import { Metadata } from "next";
 import { CategoryCarousel, CategoryCard } from "@/components";
 import { CategoryType } from "@/types";
 import axios from "axios";
 import Image from "next/image";
+
+// Define metadata for the categories page
+export const metadata: Metadata = {
+  title: "Catégories | The Cheat Sheet",
+  description: "Découvrez toutes les catégories d'outils de productivité sur The Cheat Sheet",
+  alternates: {
+    canonical: "/categories",
+  },
+  openGraph: {
+    title: "Catégories d'outils | The Cheat Sheet",
+    description: "Découvrez toutes les catégories d'outils de productivité sur The Cheat Sheet",
+    url: `${process.env.NEXT_PUBLIC_API_URL}/categories`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Catégories d'outils | The Cheat Sheet",
+    description: "Découvrez toutes les catégories d'outils de productivité sur The Cheat Sheet",
+  },
+};
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 

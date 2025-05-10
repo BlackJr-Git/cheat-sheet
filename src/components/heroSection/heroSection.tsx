@@ -14,10 +14,10 @@ function HeroSection() {
     <section className="flex flex-col gap-12 items-center justify-center relative h-[100vh] bg-[url('/gradient.svg')] bg-center bg-cover">
       <div className="relative container h-[80%] flex flex-col items-center justify-center gap-12">
         <h1 className="text-5xl font-bold text-center flex flex-col gap-4 w-full">
-          <span className={`${oxanium.className}`}>
+          <span className={``}>
             Trouvez les meilleurs ressources <ChangingWords />
           </span>
-          <span className={`${oxanium.className}`}>
+          <span className={``}>
             pour gagner de la{" "}
             <span className="text-green-600 bg-white p-2 leading-snug">
               productivité

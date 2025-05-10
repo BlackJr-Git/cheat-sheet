@@ -1,106 +1,97 @@
 "use client";
 import { SkeletonCard, ToolsCard } from "@/components";
 import { CategoryType, getToolsType } from "@/types";
-import axios from "axios";
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { useTools } from "@/hooks";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
 const skeletons: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
 function ToolsPage({ params }: { params: { categoryId: string } }) {
   const { categoryId } = params;
   const { toast } = useToast();
-  const [category, setCategory] = useState({} as CategoryType);
-  const [tools, setTools] = useState<any[]>([]); // Liste des outils
-  
   const [page, setPage] = useState<number>(1); // Numéro de page pour la pagination
-  const [loading, setLoading] = useState<boolean>(false); // Chargement
-  const [hasMore, setHasMore] = useState<boolean>(true); // Indicateur s'il reste des données à charger
   const loader = useRef<HTMLDivElement>(null); // Référence pour l'observateur
   const isFirstLoad = useRef(true); // Ref pour indiquer si c'est le premier chargement
+  const [allTools, setAllTools] = useState<any[]>([]); // Accumulate all tools
 
-  const [data, setData] = useState({} as getToolsType);
+  // Use React Query to fetch tools with the correct parameters
+  const { 
+    data, 
+    isLoading, 
+    isError, 
+    isFetching,
+    isPlaceholderData
+  } = useTools(page, 8, 'desc');
 
-  // Récupérer les données d'une page
-  const getCategory = async (pageNum: number, replace = false) => {
-    try {
-      setLoading(true);
-      const { data } = await axios.get(
-        `${API_URL}/api/tools/?pages=${pageNum}&number=8&orderby=desc`
-      );
-
-      setCategory(data.category);
-
-      // Ajouter les nouveaux outils à la liste existante sans les remplacer,
-      // sauf si on utilise replace (pour le premier chargement)
-      setTools((prevTools) =>
-        replace ? data.tools : [...prevTools, ...data.tools]
-      );
-      setData(data);
-
-      // Vérifier si on a atteint la dernière page
-      if (pageNum >= data.totalPages) {
-        setHasMore(false);
-      }
-    } catch (error) {
-      console.error(error);
+  // Determine if there are more pages to load
+  const hasMore = data ? page < data.totalPages : false;
+  
+  // Handle errors
+  useEffect(() => {
+    if (isError) {
       toast({
         title: "Une erreur est survenue",
         description: "Impossible de charger les données",
         variant: "destructive",
       });
-    } finally {
-      setLoading(false);
     }
-  };
+  }, [isError, toast]);
 
-  // Charger la première page dès le chargement du composant
+  // Update allTools when new data arrives
   useEffect(() => {
-    // On remplace les outils existants pour la première page
-    getCategory(1, true);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [categoryId]);
+    if (data?.tools) {
+      if (page === 1) {
+        // Replace all tools on first page
+        setAllTools(data.tools);
+      } else {
+        // Append tools for subsequent pages, ensuring no duplicates
+        setAllTools(prev => {
+          // Get existing tool IDs for deduplication
+          const existingIds = new Set(prev.map(tool => tool.id));
+          
+          // Filter out any tools that already exist in our list
+          const newTools = data.tools.filter(tool => !existingIds.has(tool.id));
+          
+          return [...prev, ...newTools];
+        });
+      }
+      
+      // After first load, mark as not first load anymore
+      isFirstLoad.current = false;
+    }
+  }, [data, page]);
 
-  // Intersection Observer pour charger plus d'outils lorsque le bas de page est atteint
+  // Intersection Observer for infinite scrolling
   useEffect(() => {
-    const loaderElement = loader.current; // Copier la référence du loader actuel
+    const loaderElement = loader.current;
 
     const observer = new IntersectionObserver(
       (entries) => {
         if (
           entries[0].isIntersecting &&
           hasMore &&
-          !loading &&
+          !isFetching &&
+          !isPlaceholderData && // Only fetch next page when current data is fresh
           !isFirstLoad.current
         ) {
-          setPage((prevPage) => prevPage + 1); // Incrémenter la page
+          setPage((prevPage) => prevPage + 1);
         }
       },
-      { threshold: 1.0 } // Déclenche quand on atteint le bas de page
+      { threshold: 0.5 } // Lower threshold to trigger earlier
     );
 
     if (loaderElement) {
-      observer.observe(loaderElement); // Observer l'élément
+      observer.observe(loaderElement);
     }
 
     return () => {
       if (loaderElement) {
-        observer.unobserve(loaderElement); // Désactiver l'observation
+        observer.unobserve(loaderElement);
       }
     };
-  }, [hasMore, loading]);
-
-  // Charger les outils supplémentaires lorsque la page change
-  useEffect(() => {
-    if (page > 1) {
-      getCategory(page);
-    } else {
-      isFirstLoad.current = false; // Après la première page, désactiver le premier chargement
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [page]);
+  }, [hasMore, isFetching, isPlaceholderData]);
 
   return (
     <main className="container my-4">
@@ -112,7 +103,7 @@ function ToolsPage({ params }: { params: { categoryId: string } }) {
           </h1>
           <p className="text-lg">
             <span className="text-white bg-violet-500 p-2">
-              {data?.totalTools} outils
+              {data?.totalTools || 0} outils
             </span>{" "}
             disponibles. Trouvez ce dont vous avez besoin.
           </p>
@@ -136,13 +127,13 @@ function ToolsPage({ params }: { params: { categoryId: string } }) {
 
       <section className="py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          {tools?.map((tool: any) => (
+          {allTools?.map((tool: any) => (
             <ToolsCard key={tool.id} tool={tool} />
           ))}
         </div>
 
         {/* Loader pour déclencher le scroll infini */}
-        {loading && (
+        {(isLoading || isFetching) && (
           <div className="flex items-center justify-center flex-wrap gap-6 mt-8">
             {skeletons?.map((tool: number) => (
               <SkeletonCard key={tool} />

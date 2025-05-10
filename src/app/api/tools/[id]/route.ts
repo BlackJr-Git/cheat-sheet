@@ -11,10 +11,36 @@ export async function GET(
 ) {
   try {
     const { id } = params;
-    const tool = await prisma.tool.findUnique({
-      where: { id: parseInt(id, 10) },
-      include: { categories: true },
-    });
+    
+    // Check if id is a number or a slug
+    const isNumeric = /^\d+$/.test(id);
+    
+    let tool;
+    if (isNumeric) {
+      // If id is numeric, search by id
+      tool = await prisma.tool.findUnique({
+        where: { id: parseInt(id, 10) },
+        include: { 
+          categories: {
+            include: {
+              category: true
+            }
+          } 
+        },
+      });
+    } else {
+      // If id is not numeric, search by slug
+      tool = await prisma.tool.findFirst({
+        where: { slug: id },
+        include: { 
+          categories: {
+            include: {
+              category: true
+            }
+          } 
+        },
+      });
+    }
 
     if (!tool) {
       return NextResponse.json({ error: "Tool not found" }, { status: 404 });
