@@ -8,16 +8,16 @@ import { useState } from "react";
 import { Skeleton } from "../ui/skeleton";
 
 const tool = {
-  id: 98,
-  title: "V0.dev",
+  id: 99,
+  title: "UX Pilot",
   image:
-    "https://res.cloudinary.com/devhqdrwl/image/upload/v1727770249/cheat-sheet/Screenshot_2024-10-01_085640_ibnhgg.png",
+    "https://res.cloudinary.com/devhqdrwl/image/upload/v1746895830/Capture_d_e%CC%81cran_2025-05-10_a%CC%80_17.48.02_cicddm.png",
   description:
-    "Plateforme de développement no-code offrant des outils pour créer, tester et déployer des applications sans écrire de code, avec des intégrations pour plusieurs services.",
-  url: "https://v0.dev/",
+    "Plateforme de design UX/UI propulsée par l'IA, permettant de générer des wireframes, des designs haute fidélité et des prototypes interactifs en quelques secondes. Intégration fluide avec Figma et exportation de code prête à l'emploi.",
+  url: "https://uxpilot.ai/",
   published: true,
   userLikes: [],
-  slug: "v0-dev",
+  slug: "ux-pilot",
 };
 
 export default function Highlight() {

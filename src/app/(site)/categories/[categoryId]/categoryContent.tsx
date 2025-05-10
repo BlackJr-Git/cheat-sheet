@@ -1,5 +1,6 @@
 "use client";
 import { ToolsCard, SkeletonCard } from "@/components";
+import { Loader } from "@/components";
 // Define the CategoryType interface with all needed properties
 interface CategoryType {
   id: number;
@@ -189,11 +190,11 @@ export default function CategoryContent({ categoryId }: { categoryId: string }) 
   );
 }
 
-function Loader() {
-  return (
-    <div className="flex flex-col items-center justify-center min-h-[50vh]">
-      <div className="w-16 h-16 border-4 border-violet-200 border-t-violet-500 rounded-full animate-spin"></div>
-      <p className="mt-4 text-gray-600">Chargement...</p>
-    </div>
-  );
-}
+// function Loader() {
+//   return (
+//     <div className="flex flex-col items-center justify-center min-h-[50vh]">
+//       <div className="w-16 h-16 border-4 border-violet-200 border-t-violet-500 rounded-full animate-spin"></div>
+//       <p className="mt-4 text-gray-600">Chargement...</p>
+//     </div>
+//   );
+// }
