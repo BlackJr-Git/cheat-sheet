@@ -19,7 +19,7 @@ datasource db {
 //   email         String        @unique
 //   name          String    
 //   firstName     String
-//   password      String
+//   password      String?
 //   createdAt     DateTime      @default(now())
 //   deletedAt     DateTime?
 //   role          String        @default("user")
@@ -94,25 +94,25 @@ model ToolCategory {
 }
 
 
-model Account {
-  id                 String      @id @default(cuid())
-  userId             String
-  provider           String
-  providerAccountId  String
-  type               String
+// model Account {
+//   id                 String      @id @default(cuid())
+//   userId             String
+//   provider           String
+//   providerAccountId  String
+//   type               String
   
-  refresh_token      String?  // Optionnel
-  access_token       String?  // Optionnel
-  expires_at         Int?     // Optionnel
-  token_type         String?  // Optionnel
-  scope              String?  // Optionnel
-  id_token           String?  // Optionnel
-  session_state      String?  // Optionnel
+//   refresh_token      String?  // Optionnel
+//   access_token       String?  // Optionnel
+//   expires_at         Int?     // Optionnel
+//   token_type         String?  // Optionnel
+//   scope              String?  // Optionnel
+//   id_token           String?  // Optionnel
+//   session_state      String?  // Optionnel
 
-  user               User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+//   user               User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@unique([provider, providerAccountId])
-}
+//   @@unique([provider, providerAccountId])
+// }
 
 model User {
   id            String   @id @default(uuid())
@@ -124,23 +124,23 @@ model User {
   favTools      UserTool[]
   likedTools    LikedTool[]
 
-  accounts      Account[]
-  sessions      Session[]
+  // accounts      Account[]
+  // sessions      Session[]
 }
 
-model Session {
-  id           String   @id @default(cuid())
-  sessionToken String   @unique
-  userId       String
-  expires      DateTime
+// model Session {
+//   id           String   @id @default(cuid())
+//   sessionToken String   @unique
+//   userId       String
+//   expires      DateTime
 
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-}
+//   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+// }
 
-model VerificationToken {
-  identifier String
-  token      String   @unique
-  expires    DateTime
+// model VerificationToken {
+//   identifier String
+//   token      String   @unique
+//   expires    DateTime
 
-  @@unique([identifier, token])
-}
+//   @@unique([identifier, token])
+// }
